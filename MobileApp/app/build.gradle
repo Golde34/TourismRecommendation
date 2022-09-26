@@ -40,18 +40,18 @@ dependencies {
     // LiveData and ViewModel
     implementation 'android.arch.lifecycle:runtime:1.1.1'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
-    implementation 'android.arch.lifecycle:compiler:1.1.1'
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    annotationProcessor 'android.arch.lifecycle:compiler:1.1.1'
 
     // Room
     implementation 'android.arch.persistence.room:runtime:1.1.1'
-    implementation 'android.arch.persistence.room:compiler:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
 
     // Paging
     implementation 'android.arch.paging:runtime:1.0.1'
 
     // Picasso & Palette
-    implementation 'com.github.florent37:picassopalette:2.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     // Backwards compatibility from Java 8 features
