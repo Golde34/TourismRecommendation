@@ -1,4 +1,4 @@
-package android.mobileapp;
+package tr.mobileapp;
 
 import org.junit.Test;
 
