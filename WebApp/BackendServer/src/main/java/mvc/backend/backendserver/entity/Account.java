@@ -37,14 +37,10 @@ public class Account  {
     @Column(name = "gender")
     private String gender;
 
-
     private String image;
-
 
     @Column(name = "phone_number")
     private String phoneNumber;
-
-
 
     @Column(name = "level")
     private Integer level;
@@ -70,28 +66,8 @@ public class Account  {
 
     private String username;
 
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-
-
-
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-
+    @OneToMany(mappedBy = "account", orphanRemoval = true)
+    @JsonIgnore
+    private List<Tour> tours;
 
 }
