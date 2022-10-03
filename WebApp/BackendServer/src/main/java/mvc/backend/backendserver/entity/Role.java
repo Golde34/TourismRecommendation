@@ -17,22 +17,6 @@ public class Role {
 
     @Column(name = "role_name")
     private String roleName;
-
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "role", orphanRemoval = true)
 //    @JsonIgnore
 //    private List<Account> accounts;

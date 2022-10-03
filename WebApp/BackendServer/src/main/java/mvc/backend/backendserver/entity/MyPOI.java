@@ -125,7 +125,9 @@ public class MyPOI {
 
 
 
-
+    @ManyToOne
+    @JoinColumn(name = "city_id", nullable = false)
+    private City city;
 
 
     @OneToMany(mappedBy = "startStation")

@@ -1,7 +1,6 @@
 package mvc.backend.backendserver.entity;
 
 import lombok.Data;
-import mvc.backend.backendserver.repository.BusinessTourRepo;
 
 import javax.persistence.*;
 import java.io.Serializable;
