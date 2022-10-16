@@ -5,6 +5,8 @@ import androidx.room.*;
 
 import java.sql.Date;
 
+import tr.mobileapp.Database.Converters;
+
 @Entity
 public class Account {
 
@@ -53,6 +55,10 @@ public class Account {
 
     @ColumnInfo()
     private Integer status;
+
+    @ColumnInfo()
+    @TypeConverters(Converters.class)
+    private Role role;
 
     public Account(String id, @NonNull String username, String password, String address, Date DOB, @NonNull String email, @NonNull String fullName,
                    String gender, String image, @NonNull String phoneNumber, Integer level, Integer levelPoint, Integer status) {
@@ -178,5 +184,13 @@ public class Account {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
