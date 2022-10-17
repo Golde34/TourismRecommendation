@@ -1,5 +1,6 @@
 package tr.mobileapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 import androidx.room.migration.Migration;
@@ -37,7 +38,6 @@ import tr.mobileapp.Entity.Account;
 import tr.mobileapp.Entity.Role;
 
 public class MainActivity extends AppCompatActivity {
-
     private Button buttonClick;
     RequestQueue requestQueue;
     private static final String DB_NAME = "tourismRecommendation.db";
@@ -59,24 +59,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void Sync(String url, Context context) {
         JSONObject jsonObjectRequest = new JSONObject();
+
         try {
-            JSONObject account = new JSONObject();
-            account.put("id", "1");
-            account.put("address", "gia loc");
-            account.put("DOB", "2001-04-03");
-            account.put("email", "nguyendongducviet2001@gmail.com");
-            account.put("fullname", "Nguyen Viet");
-            account.put("gender", "male");
-            account.put("image", null);
-            account.put("phoneNumber", "0343978156");
-            account.put("level", 0);
-            account.put("levelPoint", 0);
-            account.put("status", 1);
-            account.put("username", "golde");
-            JSONObject role = new JSONObject();
-            role.put("roleId", 1);
-            role.put("roleName", "user");
-            account.put("role", role);
+            Account accountE = new Account();
+            JSONObject account = accountE.toJson();
 
             jsonObjectRequest.put("walletId", account);
             jsonObjectRequest.put("destination", null);
@@ -86,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        Log.d("TEST", "-------------");
+        Log.d("TEST", jsonObjectRequest.toString());
         // Make request for JSONObject
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(
                 Request.Method.POST, url, jsonObjectRequest,
