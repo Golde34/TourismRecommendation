@@ -12,8 +12,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical"
-        android:padding="40dp"
-        >
+        android:padding="40dp">
+
         <TextView
             android:layout_width="344dp"
             android:layout_height="185dp"
@@ -34,9 +34,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginTop="20dp"
-            android:padding="20dp"
-            android:background="@drawable/rounded_btn"
             android:layout_weight="1"
+            android:background="@drawable/rounded_btn"
+            android:padding="20dp"
             android:text="Start Planning"
             android:textColor="@color/white" />
 

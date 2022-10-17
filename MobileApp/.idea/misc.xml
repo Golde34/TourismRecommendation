@@ -4,6 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Github/tourismRecommendation/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.20677083333333332" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/drawable/gradient_background.xml" value="0.1065" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_home.xml" value="0.19021739130434784" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_login.xml" value="0.24791666666666667" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.24791666666666667" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_signup.xml" value="0.24791666666666667" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_trip_plan.xml" value="0.24791666666666667" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/day_of_trip_item.xml" value="0.24791666666666667" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>
