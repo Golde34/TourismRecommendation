@@ -87,6 +87,13 @@ public class Account {
         this.username = accountName;
     }
 
+    public Account(String username, String password, String email, String phoneNumber) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getId() {
         return id;
     }

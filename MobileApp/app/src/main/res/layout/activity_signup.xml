@@ -49,24 +49,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/idIVIcon"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="30dp"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <EditText
-            android:id="@+id/idEDTEmailSignUp"
+            android:id="@+id/idEDTUserNameSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:padding="20dp"
             android:background="@drawable/rounded_edt"
             android:ems="16"
-            android:hint="Email or Phone"
+            android:hint="@string/username"
             android:inputType="text"
-            android:minHeight="48dp"
+            android:padding="15dp"
             android:textColor="@color/grey"
             android:textColorHint="@color/grey" />
 
@@ -75,30 +72,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:padding="20dp"
             android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:background="@drawable/rounded_edt"
             android:ems="16"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
-            android:minHeight="48dp"
+            android:padding="15dp"
             android:textColor="@color/grey"
             android:textColorHint="@color/grey" />
 
         <EditText
-            android:id="@+id/idEDTPassRepeatSignUp"
+            android:id="@+id/idEDTEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:padding="20dp"
             android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:background="@drawable/rounded_edt"
             android:ems="16"
-            android:hint="Repeat Password"
-            android:inputType="textPassword"
-            android:minHeight="48dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="15dp"
+            android:textColor="@color/grey"
+            android:textColorHint="@color/grey" />
+
+        <EditText
+            android:id="@+id/idEDTPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_edt"
+            android:ems="16"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:padding="15dp"
             android:textColor="@color/grey"
             android:textColorHint="@color/grey" />
 
@@ -106,12 +116,12 @@
             android:id="@+id/idButtonRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:layout_weight="1"
             android:backgroundTint="#7FBECD"
-            android:textColor="@color/grey"
-            android:text="Register" />
+            android:text="@string/register"
+            android:textColor="@color/grey" />
 
     </LinearLayout>
 

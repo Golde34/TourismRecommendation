@@ -13,7 +13,7 @@ import java.util.List;
 
 @Data
 public class AccountDTO {
-    private String id;
+    private int id;
     private String address;
     private Date DOB;
 
@@ -48,11 +48,11 @@ public class AccountDTO {
     @NotBlank(message = "Username is require.")
     private String username;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
