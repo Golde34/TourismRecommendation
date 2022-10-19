@@ -9,6 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
 @RestController
 @RequestMapping("/account")
 public class AccountController {
@@ -26,7 +30,9 @@ public class AccountController {
     }
 
     @PostMapping(value = "/signup")
-    public String signUp(@RequestBody AccountDTO accountDTO) {
-        return accountService.signUp(accountDTO);
+    public Map<String, String> signUp(@RequestBody AccountDTO accountDTO) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("message", accountService.signUp(accountDTO));
+        return map;
     }
 }
