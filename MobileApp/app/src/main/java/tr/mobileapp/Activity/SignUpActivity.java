@@ -86,12 +86,19 @@ public class SignUpActivity extends AppCompatActivity {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
+                            String errorMess = "Signup failed";
                             Log.d("Signup", response.toString());
-                            if(response.toString().equals("Signup successfully")) {
+                            try {
+                                errorMess = response.getString("message");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            if(errorMess.equals("Signup successfully")) {
                                 Intent i = new Intent(context, LoginActivity.class);
+                                finish();
                                 startActivity(i);
                             } else {
-                                Toast.makeText(context, response.toString(), Toast.LENGTH_SHORT);
+                                Toast.makeText(context, errorMess, Toast.LENGTH_LONG).show();
                             }
                         }
                     }, new Response.ErrorListener() {

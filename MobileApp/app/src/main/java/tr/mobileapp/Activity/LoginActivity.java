@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,10 +28,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import tr.mobileapp.Entity.Account;
+import tr.mobileapp.Helper.SharedPreferenceHelper;
 import tr.mobileapp.R;
 import tr.mobileapp.VolleySingleton;
 
 public class LoginActivity extends AppCompatActivity {
+
+
+    SharedPreferenceHelper sharedPreferenceHelper = new SharedPreferenceHelper();
+
     private LinearLayout llToSignUp;
     private EditText idEDTUserNameLogin;
     private EditText idEDTPassLogin;
@@ -66,16 +72,48 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("TEST", "CREATE NE");
         setContentView(R.layout.activity_login);
+
+        String jsonAccount = sharedPreferenceHelper.getDataFromPref
+                (this, "MyPref", "account");
+        if(!jsonAccount.isEmpty()){
+            Intent i = new Intent(this, HomeActivity.class);
+            finish();
+            startActivity(i);
+        }
+
         bindingView();
         bindingAction();
+
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("TEST", "START NE");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("TEST", "RESTART NE");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("TEST", "PAUSE NE");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("TEST", "STOP NE");
+    }
 
     private void Sync(String url, String username, String password, Context context) {
         JSONObject jsonObjectRequest = new JSONObject();
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
 
         try {
             Log.d("TEST", "put object");
@@ -90,12 +128,11 @@ public class LoginActivity extends AppCompatActivity {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            Log.i("response", response.toString());
-                            editor.putString("account", response.toString());
-                            editor.apply();
-
                             if(!response.toString().isEmpty()) {
+                                Log.i("response", response.toString());
+                                sharedPreferenceHelper.storeDataToPref(context, "MyPref", "account", response.toString());
                                 Intent i = new Intent(context, HomeActivity.class);
+                                finish();
                                 startActivity(i);
                             } else {
                                 Toast.makeText(context,"Login failed", Toast.LENGTH_LONG).show();
