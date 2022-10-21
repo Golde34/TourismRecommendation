@@ -63,14 +63,8 @@
                     android:id="@+id/idTVNameOfPlace"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ChiBa Boutique, "
+                    android:text="ChiBa Boutique, Hoi An"
                     android:textStyle="bold"
-                    />
-                <TextView
-                    android:id="@+id/idTVLocationOfPlace"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hoi An"
                     />
             </LinearLayout>
             <LinearLayout

@@ -1,0 +1,10 @@
+diff a/MobileApp/app/src/main/java/tr/mobileapp/Activity/HomeActivity.java b/MobileApp/app/src/main/java/tr/mobileapp/Activity/HomeActivity.java	(rejected hunks)
+@@ -72,7 +72,7 @@
+ 
+     private void bindingAction() {
+         btnPlanning.setOnClickListener(this::onIdPlanning);
+-        btnGenerateTrip.setOnClickListener(this::onGenerateTrip);
++//        btnGenerateTrip.setOnClickListener(this::onGenerateTrip);
+     }
+ 
+     private void onIdPlanning(View view) {

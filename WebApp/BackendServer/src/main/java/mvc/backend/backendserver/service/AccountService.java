@@ -34,5 +34,49 @@ public class AccountService implements IAccountService {
     }
 
 
+    @Override
+    public Account login(String username, String password) {
+
+        Account account = accountRepo.findAccountByUsername(username);
+
+        if (null != account && account.getPassword().equals(password)) {
+            return account;
+        }
+
+        return null;
+    }
+    @Override
+    public String signUp(AccountDTO accountDTO) {
+        String responseMessage = "Signup successfully";
+        System.out.println(accountDTO.toString());
+        if(accountRepo.existsAccountByUsername(accountDTO.getUsername())) {
+            responseMessage = "Username is duplicated";
+            return responseMessage;
+        }
+
+        if(accountRepo.existsAccountByEmail(accountDTO.getEmail())) {
+            responseMessage = "Email is duplicated";
+            return responseMessage;
+        }
+
+        if(accountRepo.existsAccountByPhoneNumber(accountDTO.getPhoneNumber())) {
+            responseMessage = "Phone number is duplicated";
+            return responseMessage;
+        }
+
+        Account account = new Account();
+        account.setUsername(accountDTO.getUsername());
+        account.setPassword(accountDTO.getPassword());
+        account.setEmail(accountDTO.getEmail());
+        account.setPhoneNumber(accountDTO.getPhoneNumber());
+        account.setFullName(accountDTO.getUsername());
+        account.setStatus(1);
+
+        Role role = roleRepo.findByRoleName("user");
+        account.setRole(role);
+
+        accountRepo.save(account);
+        return responseMessage;
+    }
 
 }
