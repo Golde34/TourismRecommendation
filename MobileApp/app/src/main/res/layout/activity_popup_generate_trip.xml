@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical"
+    tools:context=".Activity.PopupGenerateTrip">
+
+
+    <TextView
+        android:id="@+id/idTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:text="Itinerary planner"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/idEdtLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idTitle"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:hint="Location"
+        android:inputType="text"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+    <EditText
+        android:id="@+id/idEdtBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtLocation"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:hint="Budget"
+        android:inputType="numberDecimal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+    <EditText
+        android:id="@+id/idEdtStartDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtBudget"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:hint="Start Date"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+    <EditText
+        android:id="@+id/idEdtEndDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtStartDate"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:hint="End Date"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+    <Button
+        android:id="@+id/idGenerateTrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdtEndDate"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="100dp"
+        android:text="Start Trip" />
+
+</RelativeLayout>

@@ -50,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private FragmentSectionAdapter adapter;
-
+    private static final String DB_NAME = "tourismRecommendation.db";
+  
     private void bindingView(){
         tabLayout = findViewById(R.id.idTlNavigation);
         viewPager = findViewById(R.id.idVpContent);
@@ -75,27 +76,12 @@ public class MainActivity extends AppCompatActivity {
         bindingView();
         bindingAction();
 
+        AppDatabase database = Room.databaseBuilder(this, AppDatabase.class, "Sample.db")
+                .addMigrations(MIGRATION_1_2)
+                .build();
+        Log.d("DATABASE", "Successful create db: " + database.isOpen());
     }
 
-//    private Button buttonClick;
-//    RequestQueue requestQueue;
-//    private static final String DB_NAME = "tourismRecommendation.db";
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//        buttonClick = findViewById(R.id.buttonTest);
-//        requestQueue = Volley.newRequestQueue(this);
-//        buttonClick.setOnClickListener((v) -> {
-//            Sync("http://10.0.2.2:8080/trip/generate", this);
-//        });
-//        AppDatabase database = Room.databaseBuilder(this, AppDatabase.class, "Sample.db")
-//                .addMigrations(MIGRATION_1_2)
-//                .build();
-//        Log.d("DATABASE", "Successful create db: " + database.isOpen());
-//    }
-//
 //    public void Sync(String url, Context context) {
 //        JSONObject jsonObjectRequest = new JSONObject();
 //
@@ -154,12 +140,10 @@ public class MainActivity extends AppCompatActivity {
 //        return headers;
 //    }
 //
-//    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
-//        @Override
-//        public void migrate(SupportSQLiteDatabase database) {
-//            // Empty implementation, because the schema isn't changing.
-//        }
-//    };
-
-
+    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+       public void migrate(SupportSQLiteDatabase database) {
+           // Empty implementation, because the schema isn't changing.
+        }
+   };
 }
