@@ -107,11 +107,10 @@ public class TripController {
 
     }
 
-    @GetMapping("/getByAccount/{account}")
-    public ResponseEntity<ArrayList<Tour>> getTourByAccount(@PathVariable String account){
+    @GetMapping("/getByAccount/{accountId}")
+    public ResponseEntity<ArrayList<Tour>> getAllTourByAccount(@PathVariable int accountId){
 
-            ArrayList<Tour> optTour = tourRepo.getToursByAccount(account);
-
+            ArrayList<Tour> optTour = tourRepo.getToursByAccount(accountId);
 
             return new ResponseEntity<>(optTour, HttpStatus.OK);
 
