@@ -19,8 +19,9 @@ public class Account  {
     String ROLE_PREFIX = "ROLE_";
 
     @Id
-    @Column(name = "account_id", columnDefinition = "VARCHAR(10)")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "account_id", columnDefinition = "INT")
+    private int id;
 
     @Column(name = "address")
     private String address;
@@ -70,4 +71,5 @@ public class Account  {
     @JsonIgnore
     private List<Tour> tours;
 
+    private String password;
 }

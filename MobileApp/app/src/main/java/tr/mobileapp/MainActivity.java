@@ -2,9 +2,11 @@ package tr.mobileapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.room.Room;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -33,24 +36,46 @@ import java.util.Locale;
 import java.util.Map;
 
 import tr.mobileapp.Activity.TripPlanActivity;
+import tr.mobileapp.Adapter.FragmentSectionAdapter;
 import tr.mobileapp.Database.AppDatabase;
 import tr.mobileapp.Entity.Account;
 import tr.mobileapp.Entity.Role;
+import tr.mobileapp.Fragment.FavouriteFragment;
+import tr.mobileapp.Fragment.HomeFragment;
+import tr.mobileapp.Fragment.SavedTripFragment;
+import tr.mobileapp.Fragment.SettingFragment;
 
 public class MainActivity extends AppCompatActivity {
-    private Button buttonClick;
-    RequestQueue requestQueue;
+
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private FragmentSectionAdapter adapter;
     private static final String DB_NAME = "tourismRecommendation.db";
+  
+    private void bindingView(){
+        tabLayout = findViewById(R.id.idTlNavigation);
+        viewPager = findViewById(R.id.idVpContent);
+        adapter = new FragmentSectionAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+    }
+
+    private void bindingAction(){
+        tabLayout.setupWithViewPager(viewPager);
+
+        adapter.addFragment(new HomeFragment(), "HOME");
+        adapter.addFragment(new SavedTripFragment(this), "HISTORY");
+        adapter.addFragment(new FavouriteFragment(), "FAVOUR");
+
+        viewPager.setAdapter(adapter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        buttonClick = findViewById(R.id.buttonTest);
-        requestQueue = Volley.newRequestQueue(this);
-//        buttonClick.setOnClickListener((v) -> {
-//            Sync("http://10.0.2.2:8080/trip/generate", this);
-//        });
+
+        bindingView();
+        bindingAction();
+
         AppDatabase database = Room.databaseBuilder(this, AppDatabase.class, "Sample.db")
                 .addMigrations(MIGRATION_1_2)
                 .build();
@@ -117,8 +142,8 @@ public class MainActivity extends AppCompatActivity {
 //
     static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
-        public void migrate(SupportSQLiteDatabase database) {
-            // Empty implementation, because the schema isn't changing.
+       public void migrate(SupportSQLiteDatabase database) {
+           // Empty implementation, because the schema isn't changing.
         }
-    };
+   };
 }
