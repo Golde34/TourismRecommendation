@@ -5,6 +5,5 @@ public class GenerateTripValidate {
 
     public boolean generateTripValidate(String location, String budget, String startDate, String endDate) {
         return true;
-        if location ngu =. return false
     }
 }

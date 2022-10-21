@@ -72,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void bindingAction() {
         btnPlanning.setOnClickListener(this::onIdPlanning);
-        btnGenerateTrip.setOnClickListener(this::onGenerateTrip);
+//        btnGenerateTrip.setOnClickListener(this::onGenerateTrip);
     }
 
     private void onIdPlanning(View view) {
@@ -216,4 +216,5 @@ public class HomeActivity extends AppCompatActivity {
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         datePickerDialog.show();
     }
+}
 
