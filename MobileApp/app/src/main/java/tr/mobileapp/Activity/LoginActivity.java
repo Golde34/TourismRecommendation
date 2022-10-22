@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
         String jsonAccount = sharedPreferenceHelper.getDataFromPref
                 (this, "MyPref", "account");
         if(!jsonAccount.isEmpty()){
-            Intent i = new Intent(this, MainActivity.class);
+            Intent i = new Intent(this, HomeActivity.class);
             finish();
             startActivity(i);
         }
