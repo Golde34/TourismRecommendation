@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import tr.mobileapp.Entity.Account;
+import tr.mobileapp.Helper.SharedPreferenceHelper;
 import tr.mobileapp.R;
 import tr.mobileapp.Validate.GenerateTripValidate;
 import tr.mobileapp.VolleySingleton;
@@ -45,7 +47,8 @@ public class HomeActivity extends AppCompatActivity {
     private AlertDialog alertDialog;
     DatePickerDialog.OnDateSetListener setStartDateListener, setEndDateListener;
     RequestQueue requestQueue;
-    private GenerateTripValidate generateTripValidate;
+    private GenerateTripValidate generateTripValidate = new GenerateTripValidate();
+    SharedPreferenceHelper sharedPreferenceHelper = new SharedPreferenceHelper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +75,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private void bindingAction() {
         btnPlanning.setOnClickListener(this::onIdPlanning);
-//        btnGenerateTrip.setOnClickListener(this::onGenerateTrip);
     }
 
     private void onIdPlanning(View view) {
@@ -87,21 +89,25 @@ public class HomeActivity extends AppCompatActivity {
         JSONObject jsonObjectRequest = new JSONObject();
         try {
             // add walletId account
-            Account accountE = new Account();
-            JSONObject account = accountE.toJson();
-            jsonObjectRequest.put("walletId", account);
+            String accountString = sharedPreferenceHelper.getDataFromPref(context, "MyPref", "account");
+            Gson gson = new Gson();
+            JSONObject account = gson.fromJson(accountString, Account.class).toJson();
+//            Account accountE = new Account();
+//            JSONObject account = accountE.toJson();
 
             // add input popup
             String location = idLocation.getText().toString();
             String budget = idBudget.getText().toString();
             String startDate = idStartDate.getText().toString();
             String endDate = idEndDate.getText().toString();
+
             boolean isVerified = generateTripValidate.generateTripValidate(location, budget, startDate, endDate);
             if (isVerified) {
-                jsonObjectRequest.put("destination", null);
-                jsonObjectRequest.put("budget", null);
-                jsonObjectRequest.put("startDate", "2022-08-23");
-                jsonObjectRequest.put("endDate", "2022-08-28");
+                jsonObjectRequest.put("walletId", account);
+                jsonObjectRequest.put("destination", location);
+                jsonObjectRequest.put("budget", budget);
+                jsonObjectRequest.put("startDate", startDate);
+                jsonObjectRequest.put("endDate", endDate);
             } else {
                 Toast.makeText(context, "Validate failed", Toast.LENGTH_SHORT).show();
                 return;
@@ -166,6 +172,9 @@ public class HomeActivity extends AppCompatActivity {
         alertDialog = dialogBuilder.create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
+
+        // Button event
+        btnGenerateTrip.setOnClickListener(this::onGenerateTrip);
     }
 
     public void datePicker() {
@@ -194,7 +203,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month + 1;
-                String date = dayOfMonth + "/" + month + "/" + year;
+                String date = year + "-" + month + "-" + dayOfMonth;
                 idStartDate.setText(date);
             }
         };
@@ -202,7 +211,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month + 1;
-                String date = dayOfMonth + "/" + month + "/" + year;
+                String date = year + "-" + month + "-" + dayOfMonth;
                 idEndDate.setText(date);
             }
         };

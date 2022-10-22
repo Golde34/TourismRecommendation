@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private void bindingAction(){
         tabLayout.setupWithViewPager(viewPager);
 
-        adapter.addFragment(new HomeFragment(), "HOME");
+        adapter.addFragment(new HomeFragment(this), "HOME");
         adapter.addFragment(new SavedTripFragment(this), "HISTORY");
         adapter.addFragment(new FavouriteFragment(), "FAVOUR");
 

@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Github/tourismRecommendation/MobileApp/app/src/main/res/layout/activity_home.xml" value="0.23425925925925925" />
         <entry key="..\:/Github/tourismRecommendation/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.20677083333333332" />
+        <entry key="..\:/Github/tourismRecommendation/MobileApp/app/src/main/res/layout/activity_popup_generate_trip.xml" value="0.19375" />
+        <entry key="..\:/Github/tourismRecommendation/MobileApp/app/src/main/res/layout/fragment_home.xml" value="0.10185185185185185" />
         <entry key="..\:/Users/nhhai/OneDrive/Desktop/Ky7_FA22/PRM392/tourismRecommendation/MobileApp/app/src/main/res/drawable/gradient_background.xml" value="0.1" />
         <entry key="..\:/Users/nhhai/OneDrive/Desktop/Ky7_FA22/PRM392/tourismRecommendation/MobileApp/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/nhhai/OneDrive/Desktop/Ky7_FA22/PRM392/tourismRecommendation/MobileApp/app/src/main/res/layout/activity_login.xml" value="0.1" />

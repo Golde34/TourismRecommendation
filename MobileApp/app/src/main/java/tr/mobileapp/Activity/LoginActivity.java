@@ -29,6 +29,7 @@ import java.util.Map;
 
 import tr.mobileapp.Entity.Account;
 import tr.mobileapp.Helper.SharedPreferenceHelper;
+import tr.mobileapp.MainActivity;
 import tr.mobileapp.R;
 import tr.mobileapp.VolleySingleton;
 
@@ -78,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
         String jsonAccount = sharedPreferenceHelper.getDataFromPref
                 (this, "MyPref", "account");
         if(!jsonAccount.isEmpty()){
-            Intent i = new Intent(this, HomeActivity.class);
+            Intent i = new Intent(this, MainActivity.class);
             finish();
             startActivity(i);
         }

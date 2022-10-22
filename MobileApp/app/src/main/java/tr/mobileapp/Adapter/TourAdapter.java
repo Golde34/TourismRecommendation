@@ -34,7 +34,11 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull TourAdapter.ViewHolder holder, int position) {
         Tour tour = tourArrayList.get(position);
-        holder.setTourData(tour);
+        if (tour != null) {
+            holder.setTourData(tour);
+        } else {
+            return;
+        }
     }
 
     @Override

@@ -65,8 +65,8 @@ public class SavedTripFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_saved_trip, container, false);
         bindingView(v);
 
-        adapter = new TourAdapter(getContext(), tourArrayList);
-        rcvTour.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new TourAdapter(context, tourArrayList);
+        rcvTour.setLayoutManager(new LinearLayoutManager(context));
         rcvTour.setAdapter(adapter);
 
         // Inflate the layout for this fragment
