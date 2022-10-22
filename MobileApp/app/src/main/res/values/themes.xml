@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="Theme.MobileApp.Popup">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
@@ -22,8 +23,18 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+
     <style name="Theme.MobileApp.Button">
         <item name="colorButtonNormal">@color/lightBlue</item>
         <item name="android:textColor">@color/lightGrey</item>
     </style>
+
+    <style name="Theme.MobileApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MobileApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MobileApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
