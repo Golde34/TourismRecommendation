@@ -7,12 +7,16 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,18 +26,25 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 import tr.mobileapp.Entity.Account;
+import tr.mobileapp.Entity.Tour;
 import tr.mobileapp.Helper.SharedPreferenceHelper;
 import tr.mobileapp.R;
 import tr.mobileapp.Validate.GenerateTripValidate;
@@ -71,6 +82,93 @@ public class HomeActivity extends AppCompatActivity {
         idBudget = popupView.findViewById(R.id.idEdtBudget);
         idStartDate = popupView.findViewById(R.id.idEdtStartDate);
         idEndDate = popupView.findViewById(R.id.idEdtEndDate);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.idItemSavedTrip:
+                moveToSavedStrip("http://10.0.2.2:8080/trip/getByAccount/1", this);
+                return true;
+            case R.id.idItemFavourite:
+                return true;
+            case R.id.idItemSetting:
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void moveToSavedStrip(String url, Context context) {
+        JSONObject jsonObjectRequest = new JSONObject();
+
+        // add walletId account
+        String accountString = sharedPreferenceHelper.getDataFromPref(context, "MyPref", "account");
+        Gson gson = new Gson();
+        String accountId = gson.fromJson(accountString, Account.class).getId();
+
+        Log.d("TEST", "-------------");
+        Log.d("TEST", jsonObjectRequest.toString());
+        // Make request for JSONObject
+        JsonArrayRequest jsonArrayReq = new JsonArrayRequest(
+                Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Intent i = new Intent(context, SavedTripActivity.class);
+                        i.putExtra("response", response.toString());
+
+                        startActivity(i);
+
+//                        ArrayList<Tour> tours = new ArrayList<>();
+//                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyy-MM-dd");
+//                        for (int i = 0; i < response.length(); i++) {
+//                            try {
+//                                JSONObject tourObj = response.getJSONObject(i);
+//                                int id = tourObj.getInt("id");
+//                                Date startDate = new java.sql.Date(dateFormat.parse(tourObj.getString("startDate")).getTime());
+//                                Date endDate = new java.sql.Date(dateFormat.parse(tourObj.getString("endDate")).getTime());
+//                                int numberOfDays = tourObj.getInt("numberOfDays");
+//
+//                                Tour tour = new Tour(id, startDate, endDate, numberOfDays);
+//                                tours.add(tour);
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            } catch (ParseException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("TAG", "Error: " + error.getMessage());
+            }
+        }) {
+
+            /**
+             * Passing some request headers
+             */
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+
+        };
+//        Volley.newRequestQueue(this).add(jsonObjReq);
+        VolleySingleton.getmInstance(getApplicationContext()).addToRequestQueue(jsonArrayReq);
+//        VolleySingleton.getmInstance(getApplicationContext());
+
     }
 
     private void bindingAction() {

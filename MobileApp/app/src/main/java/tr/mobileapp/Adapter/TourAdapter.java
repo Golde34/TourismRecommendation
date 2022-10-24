@@ -63,7 +63,7 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder>{
         }
 
         public void setTourData(Tour tour) {
-            tvTourId.setText(tour.getId());
+            tvTourId.setText(String.valueOf(tour.getId()));
             tvStartDate.setText(tour.getStartDate().toString());
             tvEndDate.setText(tour.getEndDate().toString());
         }
