@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="18dp"
+        android:orientation="horizontal"
+        android:layout_marginEnd="18dp">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_backspace_black_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#2a2a2a"
+            android:letterSpacing="0.01"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginLeft="13dp"
+            android:lineSpacingExtra="9sp"
+            android:gravity="center_horizontal"
+            android:text="Ratings &amp; Reviews"
+            />
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.Toolbar>
