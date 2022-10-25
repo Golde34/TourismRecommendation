@@ -9,6 +9,7 @@
         <entry key="..\:/Users/nhhai/OneDrive/Desktop/Ky7_FA22/PRM392/tourismRecommendation/MobileApp/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/nhhai/OneDrive/Desktop/Ky7_FA22/PRM392/tourismRecommendation/MobileApp/app/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/Users/nhhai/OneDrive/Desktop/Ky7_FA22/PRM392/tourismRecommendation/MobileApp/app/src/main/res/layout/activity_trip_plan.xml" value="0.1" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/drawable-hdpi/orange_gradient.xml" value="0.2135" />
         <entry key="..\:/github/MobileApp/app/src/main/res/drawable-v24/bg_gradient.xml" value="0.2975" />
         <entry key="..\:/github/MobileApp/app/src/main/res/drawable-v24/ic_chevron_right_black_24dp.xml" value="0.226" />
         <entry key="..\:/github/MobileApp/app/src/main/res/drawable-v24/ic_keyboard_backspace_black_24dp.xml" value="0.226" />
@@ -19,11 +20,23 @@
         <entry key="..\:/github/MobileApp/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1205" />
         <entry key="..\:/github/MobileApp/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1205" />
         <entry key="..\:/github/MobileApp/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1205" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_home.xml" value="0.3625" />
         <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_list_review.xml" value="0.21927083333333333" />
-        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_main_review.xml" value="0.67" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_login.xml" value="0.3734375" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_main_review.xml" value="0.33" />
         <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_main_review_two.xml" value="0.3484375" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_popup_generate_trip.xml" value="0.3734375" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_signup.xml" value="0.3625" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/activity_trip_plan.xml" value="0.3625" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/day_of_trip_item.xml" value="0.3625" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/fragment_favourite.xml" value="0.3625" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/fragment_saved_trip.xml" value="0.3625" />
         <entry key="..\:/github/MobileApp/app/src/main/res/layout/fragment_setting.xml" value="0.29583333333333334" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/item_review_two.xml" value="0.25" />
         <entry key="..\:/github/MobileApp/app/src/main/res/layout/toolbar_one.xml" value="0.2947916666666667" />
+        <entry key="..\:/github/MobileApp/app/src/main/res/layout/tour_item.xml" value="0.3625" />
       </map>
     </option>
   </component>
