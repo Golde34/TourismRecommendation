@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="lightGrey">#D3D3D3</color>
     <color name="duskYellow">#FFC992</color>
+    <color name="start_bg">#7FBECD</color>
+    <color name="end_bg">#ADDFEA</color>
+    <color name="grey">#696969</color>
+    <color name="colorTransparent">#43000000</color>
+    <color name="lightBlue">#99D4DO</color>
 </resources>

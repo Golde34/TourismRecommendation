@@ -3,7 +3,12 @@ package tr.mobileapp.Entity;
 import androidx.annotation.NonNull;
 import androidx.room.*;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.Date;
+
+import tr.mobileapp.Database.Converters;
 
 @Entity
 public class Account {
@@ -54,6 +59,12 @@ public class Account {
     @ColumnInfo()
     private Integer status;
 
+    @ColumnInfo()
+    @TypeConverters(Converters.class)
+    private Role role;
+
+    public Account() {}
+
     public Account(String id, @NonNull String username, String password, String address, Date DOB, @NonNull String email, @NonNull String fullName,
                    String gender, String image, @NonNull String phoneNumber, Integer level, Integer levelPoint, Integer status) {
         this.id = id;
@@ -74,6 +85,13 @@ public class Account {
     public Account(String id, String accountName) {
         this.id = id;
         this.username = accountName;
+    }
+
+    public Account(String username, String password, String email, String phoneNumber) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getId() {
@@ -178,5 +196,38 @@ public class Account {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public JSONObject toJson()  {
+        JSONObject account = new JSONObject();
+        Role role = new Role();
+        JSONObject roleJson = role.toJson();
+        try {
+            account.put("id", "1");
+            account.put("address", "gia loc");
+            account.put("DOB", "2001-04-03");
+            account.put("email", "nguyendongducviet2001@gmail.com");
+            account.put("fullname", "Nguyen Viet");
+            account.put("gender", "male");
+            account.put("image", null);
+            account.put("phoneNumber", "0343978156");
+            account.put("level", 0);
+            account.put("levelPoint", 0);
+            account.put("status", 1);
+            account.put("username", "golde");
+            account.put("role", roleJson);
+            return account;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
