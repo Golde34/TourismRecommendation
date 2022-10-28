@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/rounded_corner">
+
+    <ImageView
+        android:id="@+id/imgHotelImage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:srcCompat="@drawable/placeholder_image"
+        tools:srcCompat="@drawable/placeholder_image" />
+
+    <RelativeLayout
+        android:id="@+id/layoutDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgHotelImage"
+        android:layout_marginTop="5dp"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:id="@+id/layoutPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/txtHotelName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resort Novotel"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <RatingBar
+                    android:id="@+id/rbHotelRating"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtHotelName"
+                    android:numStars="5"
+                    android:rating="4.7"
+                    android:theme="@style/RatingBar" />
+
+                <TextView
+                    android:id="@+id/txtHotelLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rbHotelRating"
+                    android:text="90, 19 Alley of Ly Thuong Kiet street, Phan Chu Trinh ward, Hoan Kiem district, Hanoi city" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="2">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price range from" />
+
+                <TextView
+                    android:id="@+id/txtHotelPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView7"
+                    android:text="1,699,000 VND/night"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnBookHotel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtHotelPrice"
+                    android:text="Book a room" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtHotelTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutPrice"
+            android:layout_marginTop="10dp"
+            android:text="Open from: 9:00 - 21:00"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtHotelDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtHotelTime"
+            android:text="Description" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
