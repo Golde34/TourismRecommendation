@@ -89,12 +89,12 @@ public class HomeActivity extends AppCompatActivity {
     public void buildSlider(){
         imageSlider = findViewById(R.id.image_slider);
         ArrayList<SlideModel> images = new ArrayList<>();
-        images.add(new SlideModel(R.drawable.img_mu_cang_chai, null));
-        images.add(new SlideModel(R.drawable.img_cau_vang, null));
-        images.add(new SlideModel(R.drawable.img_cat_ba, null));
-        images.add(new SlideModel(R.drawable.img_da_lat, null));
-        images.add(new SlideModel(R.drawable.img_hoi_an, null));
-        images.add(new SlideModel(R.drawable.img_phu_quoc, null));
+        images.add(new SlideModel(R.drawable.img_mu_cang_chai, "Mu Cang Chai", null));
+        images.add(new SlideModel(R.drawable.img_cau_vang, "Cau Vang", null));
+        images.add(new SlideModel(R.drawable.img_cat_ba, "Cat Ba", null));
+        images.add(new SlideModel(R.drawable.img_da_lat, "Da Lat", null));
+        images.add(new SlideModel(R.drawable.img_hoi_an, "Hoi An", null));
+        images.add(new SlideModel(R.drawable.img_phu_quoc, "Phu Quoc", null));
 
         imageSlider.setImageList(images, ScaleTypes.CENTER_INSIDE);
 
