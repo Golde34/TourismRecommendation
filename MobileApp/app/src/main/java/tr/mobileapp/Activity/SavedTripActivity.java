@@ -1,6 +1,7 @@
 package tr.mobileapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -69,7 +70,8 @@ public class SavedTripActivity extends AppCompatActivity {
 
         TourAdapter adapter = new TourAdapter(this, tourArrayList);
         rcvSavedTrip.setAdapter(adapter);
-        rcvSavedTrip.setLayoutManager(new LinearLayoutManager(this));
+        int numberOfColumns = 2;
+        rcvSavedTrip.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
         rcvSavedTrip.addOnItemTouchListener(new RecyclerItemClickListener(this, rcvSavedTrip, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
