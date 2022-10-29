@@ -31,6 +31,10 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.interfaces.ItemClickListener;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -58,6 +62,9 @@ public class HomeActivity extends AppCompatActivity {
     private EditText idLocation, idBudget, idStartDate, idEndDate;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog alertDialog;
+    private ImageSlider imageSlider;
+
+
     DatePickerDialog.OnDateSetListener setStartDateListener, setEndDateListener;
     RequestQueue requestQueue;
     private GenerateTripValidate generateTripValidate = new GenerateTripValidate();
@@ -70,12 +77,33 @@ public class HomeActivity extends AppCompatActivity {
 
         bindingView();
         bindingAction();
+        buildSlider();
 
         requestQueue = Volley.newRequestQueue(this);
     }
 
     public void bindingView() {
         btnPlanning = findViewById(R.id.idPlanning);
+    }
+
+    public void buildSlider(){
+        imageSlider = findViewById(R.id.image_slider);
+        ArrayList<SlideModel> images = new ArrayList<>();
+        images.add(new SlideModel(R.drawable.img_mu_cang_chai, null));
+        images.add(new SlideModel(R.drawable.img_cau_vang, null));
+        images.add(new SlideModel(R.drawable.img_cat_ba, null));
+        images.add(new SlideModel(R.drawable.img_da_lat, null));
+        images.add(new SlideModel(R.drawable.img_hoi_an, null));
+        images.add(new SlideModel(R.drawable.img_phu_quoc, null));
+
+        imageSlider.setImageList(images, ScaleTypes.CENTER_INSIDE);
+
+        imageSlider.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemSelected(int position) {
+                // On touch image in slider
+            }
+        });
     }
 
     public void bindingViewPopup(View popupView) {
