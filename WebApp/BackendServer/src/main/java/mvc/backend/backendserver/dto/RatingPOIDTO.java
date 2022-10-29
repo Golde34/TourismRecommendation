@@ -1,20 +1,33 @@
 package mvc.backend.backendserver.dto;
 
 import mvc.backend.backendserver.entity.Account;
+import mvc.backend.backendserver.entity.MyPOI;
+
+import javax.persistence.*;
+import java.sql.Date;
 
 public class RatingPOIDTO {
-    public int id;
-    public int rate;
-    public String comment;
-    public int accountId;
-    public int poiId;
 
-    public int getId() {
-        return id;
+    private int ratingId;
+
+    private int rate;
+
+    private String comment;
+
+    private Date timeCreate;
+
+    private int numberOfLike;
+
+    private Account account;
+
+    private MyPOI poi;
+
+    public int getRatingId() {
+        return ratingId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setRatingId(int ratingId) {
+        this.ratingId = ratingId;
     }
 
     public int getRate() {
@@ -33,19 +46,35 @@ public class RatingPOIDTO {
         this.comment = comment;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public Date getTimeCreate() {
+        return timeCreate;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setTimeCreate(Date timeCreate) {
+        this.timeCreate = timeCreate;
     }
 
-    public int getPoiId() {
-        return poiId;
+    public int getNumberOfLike() {
+        return numberOfLike;
     }
 
-    public void setPoiId(int poiId) {
-        this.poiId = poiId;
+    public void setNumberOfLike(int numberOfLike) {
+        this.numberOfLike = numberOfLike;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public MyPOI getPoi() {
+        return poi;
+    }
+
+    public void setPoi(MyPOI poi) {
+        this.poi = poi;
     }
 }

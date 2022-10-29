@@ -55,7 +55,7 @@ public class TripPlanActivity extends AppCompatActivity {
         try {
             jsonObj = new JSONObject(response);
 
-            JSONArray daysOfTrip = jsonObj.getJSONArray("listDays");
+                JSONArray daysOfTrip = jsonObj.getJSONArray("listDays");
             for (int i = 0; i < daysOfTrip.length(); i++) {
 
                 DayOfTrip day = new DayOfTrip();

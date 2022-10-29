@@ -21,6 +21,9 @@ public class RatingPOI {
     @Column(name = "time_create")
     private Date timeCreate;
 
+    @Column(name = "number_of_like")
+    private int numberOfLike;
+
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = false)
     private Account account;

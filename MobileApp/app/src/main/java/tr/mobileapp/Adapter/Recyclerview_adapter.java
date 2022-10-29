@@ -9,6 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Response;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import tr.mobileapp.Entity.ReviewPOI;
@@ -24,6 +29,8 @@ public class Recyclerview_adapter extends RecyclerView.Adapter<Recyclerview_adap
         this.list = list;
     }
 
+
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,13 +43,13 @@ public class Recyclerview_adapter extends RecyclerView.Adapter<Recyclerview_adap
 
         ReviewPOI model_eating = list.get(position);
 
-        holder.tv_rating.setText(String.valueOf(model_eating.getRating()));
+        holder.tv_rating.setText(String.valueOf(model_eating.getRate()));
 
-        holder.tv_title.setText(model_eating.getTitle());
+        holder.tv_title.setText(model_eating.getAccountName());
 
-        holder.tv_des.setText(model_eating.getDescription());
+        holder.tv_des.setText(model_eating.getComment());
 
-        holder.tv_username_time.setText(model_eating.getUsernameandtime());
+        holder.tv_username_time.setText(model_eating.getAccountName());
 
 
     }

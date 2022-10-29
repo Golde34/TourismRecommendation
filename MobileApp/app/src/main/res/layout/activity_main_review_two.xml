@@ -75,6 +75,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_evarageOfStartVoting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
@@ -92,6 +93,7 @@
                             android:src="@drawable/review_img" />
 
                         <TextView
+                            android:id="@+id/tv_TotalVotingStart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -134,6 +136,7 @@
 
                             <ProgressBar
                                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                                android:id="@+id/tv_Process5Star"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -144,6 +147,7 @@
                                 android:progress="80" />
 
                             <TextView
+                                android:id="@+id/tv_CountNumber5Start"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8dp"
@@ -176,6 +180,7 @@
 
                             <ProgressBar
                                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                                android:id="@+id/tv_Process4Star"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -186,6 +191,7 @@
                                 android:progress="60" />
 
                             <TextView
+                                android:id="@+id/tv_CountNumber4Start"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8dp"
@@ -218,6 +224,7 @@
 
                             <ProgressBar
                                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                                android:id="@+id/tv_Process3Star"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -228,6 +235,7 @@
                                 android:progress="70" />
 
                             <TextView
+                                android:id="@+id/tv_CountNumber3Start"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8dp"
@@ -261,6 +269,7 @@
 
                             <ProgressBar
                                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                                android:id="@+id/tv_Process2Star"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -271,6 +280,7 @@
                                 android:progress="50" />
 
                             <TextView
+                                android:id="@+id/tv_CountNumber2Start"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8dp"
@@ -303,6 +313,7 @@
 
                             <ProgressBar
                                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                                android:id="@+id/tv_Process1Star"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -313,6 +324,7 @@
                                 android:progress="30" />
 
                             <TextView
+                                android:id="@+id/tv_CountNumber1Start"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8dp"
