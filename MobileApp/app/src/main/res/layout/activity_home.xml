@@ -2,43 +2,76 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_plan">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_plan1">
 
     <LinearLayout
         android:id="@+id/idLLWelcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
-        android:padding="40dp">
-
-        <TextView
-            android:layout_width="344dp"
-            android:layout_height="185dp"
-            android:text="The new way to plan your next trip"
-            android:textColor="#3B4754"
-            android:textSize="50sp" />
+        android:padding="35dp">
 
         <TextView
             android:layout_width="265dp"
             android:layout_height="wrap_content"
-            android:text="Create a fully customized day by day itinerary for free"
+            android:text="It's a Big World"
             android:textColor="@color/grey"
-            android:textSize="15sp" />
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/idPlanning"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="344dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_btn"
-            android:padding="12dp"
-            android:text="Start Planning"
-            android:textColor="@color/white" />
+            android:text="Out There, Go Explore"
+            android:textColor="#3B4754"
+            android:textSize="60sp"
+            android:textStyle="bold" />
 
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/idLLContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="335dp"
+        android:orientation="vertical"
+        android:layout_below="@id/idLLWelcome"
+        android:layout_centerHorizontal="true"
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/idPlanning"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:backgroundTint="#31BC79"
+            app:cornerRadius="25dp"
+            android:text="Start Planning ➜"
+            android:padding="18dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
+
+        <!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:cardElevation="10dp"-->
+<!--            app:cardCornerRadius="20dp"-->
+<!--            app:cardBackgroundColor="@color/end_bg"-->
+<!--            app:cardPreventCornerOverlap="true"-->
+<!--            app:cardUseCompatPadding="true"-->
+<!--            >-->
+
+<!--        <com.denzcoskun.imageslider.ImageSlider-->
+<!--            android:id="@+id/image_slider"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="200dp"-->
+<!--            app:iss_auto_cycle="true"-->
+<!--            app:iss_period="5000" />-->
+<!--        </androidx.cardview.widget.CardView>-->
     </LinearLayout>
 
 
