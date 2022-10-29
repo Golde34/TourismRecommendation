@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -180,9 +182,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void onGenerateTrip(View view) {
-        Sync("http://10.0.2.2:8080/trip/generate", this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Sync("http://10.0.2.2:8080/trip/generate", this);
+        }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void Sync(String url, Context context) {
         JSONObject jsonObjectRequest = new JSONObject();
         try {
@@ -199,16 +204,18 @@ public class HomeActivity extends AppCompatActivity {
             String startDate = idStartDate.getText().toString();
             String endDate = idEndDate.getText().toString();
 
-            boolean isVerified = generateTripValidate.generateTripValidate(location, budget, startDate, endDate);
-            if (isVerified) {
-                jsonObjectRequest.put("walletId", account);
-                jsonObjectRequest.put("destination", location);
-                jsonObjectRequest.put("budget", budget);
-                jsonObjectRequest.put("startDate", startDate);
-                jsonObjectRequest.put("endDate", endDate);
-            } else {
-                Toast.makeText(context, "Validate failed", Toast.LENGTH_SHORT).show();
-                return;
+            HashMap<Integer, String> isVerified = generateTripValidate.generateTripValidate(location, budget, startDate, endDate);
+            for (int verified : isVerified.keySet()) {
+                if (verified == 0) {
+                    jsonObjectRequest.put("walletId", account);
+                    jsonObjectRequest.put("destination", location);
+                    jsonObjectRequest.put("budget", budget);
+                    jsonObjectRequest.put("startDate", startDate);
+                    jsonObjectRequest.put("endDate", endDate);
+                } else {
+                    Toast.makeText(context, isVerified.get(verified), Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
 
         } catch (JSONException e) {
