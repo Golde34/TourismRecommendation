@@ -99,7 +99,9 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.idItemSavedTrip:
                 moveToSavedStrip("http://10.0.2.2:8080/trip/getByAccount/1", this);
                 return true;
-            case R.id.idItemFavourite:
+            case R.id.idItemWeather:
+                Intent i = new Intent(this, WeatherActivity.class);
+                startActivity(i);
                 return true;
             case R.id.idItemSetting:
                 return true;

@@ -42,7 +42,6 @@ import tr.mobileapp.Entity.Account;
 import tr.mobileapp.Entity.POIOfDay;
 import tr.mobileapp.Entity.TripDetailRVModal;
 import tr.mobileapp.R;
-import tr.mobileapp.Ultility.VolleyCallBack;
 import tr.mobileapp.VolleySingleton;
 
 public class TripDetailRVAdapter extends RecyclerView.Adapter<TripDetailRVAdapter.ViewHolder>{

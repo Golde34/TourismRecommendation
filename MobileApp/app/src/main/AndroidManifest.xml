@@ -4,8 +4,14 @@
     package="tr.mobileapp"
     android:usesCleartextTraffic="true">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
+    <uses-feature android:name="android.hardware.location.network" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +25,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ViewHotel"
+            android:name=".Activity.WeatherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ViewHotel"
             android:exported="false" />
         <activity
             android:name=".Activity.FavouriteActivity"
@@ -73,4 +82,5 @@
             android:name=".MainActivity"
             android:exported="true" />
     </application>
+
 </manifest>
