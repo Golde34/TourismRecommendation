@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -98,6 +99,7 @@ public class WeatherActivity extends AppCompatActivity {
                 } else {
                     cityNameTV.setText(cityName);
                     getWeatherInfo(city);
+                    hideKeyboard();
                 }
             }
         });
@@ -212,5 +214,14 @@ public class WeatherActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
         requestQueue.start();
         Log.d("Ee", requestQueue.toString());
+    }
+
+    private void hideKeyboard() {
+        try {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(WeatherActivity.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

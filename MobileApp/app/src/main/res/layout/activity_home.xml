@@ -37,7 +37,7 @@
         android:id="@+id/idLLContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="335dp"
+        android:layout_marginTop="300dp"
         android:orientation="vertical"
         android:layout_below="@id/idLLWelcome"
         android:layout_centerHorizontal="true"
