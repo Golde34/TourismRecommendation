@@ -7,7 +7,14 @@
     tools:context="tr.mobileapp.Activity.TripPlanActivity"
     android:background="@drawable/bg_plan">
 
+    <Button
+        android:id="@+id/btnHotelView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
     <LinearLayout
+        android:layout_below="@id/btnHotelView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -27,12 +34,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idRcvTripDetail"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
+
+
     </LinearLayout>
 
 </RelativeLayout>

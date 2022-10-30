@@ -19,8 +19,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ViewHotel"
-            android:exported="false" />
+            android:name=".Activity.ViewHotel"
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".Activity.FavouriteActivity"
             android:exported="false">
