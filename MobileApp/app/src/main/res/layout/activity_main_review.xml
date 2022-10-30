@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical"
+    tools:context=".Activity.MainReview">
+
+
+    <TextView
+        android:id="@+id/idTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:text="Thank you for Your Review!"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="25sp" />
+    <TextView
+        android:id="@+id/idmessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:text="Reviews like yours really support local florist by helping people discover us."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="20sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/idYourReviewtext"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/idmessage"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:text="Your Review:"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="20sp" />-->
+
+<!--    <RatingBar-->
+<!--        android:id="@+id/idratingBar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/idYourReviewtext"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginLeft="50dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:layout_marginRight="50dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:progressTint="#ff7134"-->
+<!--        android:isIndicator="false"-->
+<!--        android:numStars="5"-->
+<!--        android:rating="3"-->
+<!--        android:stepSize="1" />-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/idYourReview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/idratingBar"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:text=""-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="20sp" />-->
+    <Button
+        android:id="@+id/btGoBackReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idmessage"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="100dp"
+        android:backgroundTint="#ff7134"
+        android:textColor="@color/white"
+        android:text="Go Back to review screen" />
+
+
+
+
+</RelativeLayout>

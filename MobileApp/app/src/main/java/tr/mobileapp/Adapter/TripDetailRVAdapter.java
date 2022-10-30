@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ import java.util.Map;
 import java.util.Random;
 
 import tr.mobileapp.Activity.HomeActivity;
+import tr.mobileapp.Activity.MainReviewTwo;
 import tr.mobileapp.Entity.Account;
 import tr.mobileapp.Entity.POIOfDay;
 import tr.mobileapp.Entity.TripDetailRVModal;
@@ -49,6 +51,7 @@ public class TripDetailRVAdapter extends RecyclerView.Adapter<TripDetailRVAdapte
     private Context context;
     private ArrayList<POIOfDay> poiOfDays;
     private LayoutInflater inflater;
+
 
     public TripDetailRVAdapter(Context context, ArrayList<POIOfDay> poiOfDays) {
         this.context = context;
@@ -84,13 +87,15 @@ public class TripDetailRVAdapter extends RecyclerView.Adapter<TripDetailRVAdapte
         private RatingBar ratingRB;
         String searchQuery;
         String imageUri;
+        private Button btnReviewPOI;
+        private int poiID;
 
         ArrayList<Integer> images = new ArrayList<>();
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             bindingView(itemView);
-
+            BindingAction();
             images.add(R.drawable.destination);
             images.add(R.drawable.flight);
             images.add(R.drawable.map);
@@ -98,6 +103,7 @@ public class TripDetailRVAdapter extends RecyclerView.Adapter<TripDetailRVAdapte
             images.add(R.drawable.rickshaw);
             images.add(R.drawable.travel);
         }
+
 
         private void bindingView(View view) {
             openTimeTV = view.findViewById(R.id.idTVStartTime);
@@ -108,6 +114,39 @@ public class TripDetailRVAdapter extends RecyclerView.Adapter<TripDetailRVAdapte
 
             placeIV = view.findViewById(R.id.idIVPlace);
             ratingRB = view.findViewById(R.id.idRBRating);
+            btnReviewPOI = view.findViewById(R.id.idBTNBook);
+
+
+        }
+          private void BindingAction(){
+              btnReviewPOI.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View view) {
+                      TakeReviewPOI();
+                  }
+              });
+           }
+        private void Sync(String url, Context context)  {
+            JsonArrayRequest jsonArrReq = new JsonArrayRequest(Request.Method.POST,
+                    url+String.valueOf(poiID),null,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            Intent i = new Intent(context, MainReviewTwo.class);
+                            i.putExtra("response", response.toString());
+                            i.putExtra("poiID",poiID );
+                            context.startActivity(i);
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d("TAG", "ErTakeReviewPOI()ror: " + error.getMessage());
+                }
+            });
+            VolleySingleton.getmInstance(context).addToRequestQueue(jsonArrReq);
+        }
+        private void TakeReviewPOI() {
+            Sync("http://10.0.2.2:8080/ReviewPOI/getRating1/", context);
         }
 
         public void setData(POIOfDay poiOfDay) throws ParseException {
@@ -120,11 +159,13 @@ public class TripDetailRVAdapter extends RecyclerView.Adapter<TripDetailRVAdapte
             ratingTV.setText(Double.toString(poiOfDay.getPoi().getTotalRating()));
             ratingRB.setRating((float) poiOfDay.getPoi().getTotalRating());
 
+
             int min = 0;
             int max = images.size()-1;
             int random = new Random().nextInt((max - min) + 1) + min;
 
             placeIV.setImageResource(images.get(random));
+            poiID = poiOfDay.getPoi().getPOIId();
         }
 
 

@@ -18,6 +18,7 @@ import java.util.Optional;
 public class POIController {
     @Autowired
     private POIRepo poiRepo;
+
     @GetMapping("/{id}")
     public ResponseEntity<MyPOI> getPOIById(@PathVariable int id){
         try {

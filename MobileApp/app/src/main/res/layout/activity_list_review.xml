@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ListReview">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#1c1c1c"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="42dp"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="5sp"
+        android:text="Ronny Studio"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="18dp"
+        android:orientation="vertical"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="18dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:letterSpacing="0.02"
+            android:lineSpacingExtra="5sp"
+            android:textColor="#1c1c1c"
+            android:textSize="20sp"
+            android:text="About" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:letterSpacing="0.02"
+            android:lineSpacingExtra="8sp"
+            android:textColor="#87879d"
+            android:textSize="16sp"
+            android:text="We provide you the Android UI Kit with Source code. join our 1$ UI Kit  for All UI kit acess. For more detail visit our website " />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:letterSpacing="0.02"
+            android:lineSpacingExtra="8sp"
+            android:textColor="#7850FF"
+            android:textSize="16sp"
+            android:text="https://www.ronnystudio.com/" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="18.1dp"
+        android:id="@+id/lay_one"
+        android:orientation="horizontal"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="18.1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:lineSpacingExtra="5sp"
+            android:textColor="#1c1c1c"
+            android:textSize="20sp"
+            android:text="Review 1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="end"
+            android:lineSpacingExtra="4sp"
+            android:textColor="#1c1c1c"
+            android:textSize="16sp"
+            android:text="View" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="18.1dp"
+        android:id="@+id/lay_two"
+        android:orientation="horizontal"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="18.1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:lineSpacingExtra="5sp"
+            android:textColor="#1c1c1c"
+            android:textSize="20sp"
+            android:text="Review 2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="end"
+            android:lineSpacingExtra="4sp"
+            android:textColor="#1c1c1c"
+            android:textSize="16sp"
+            android:text="View" />
+
+    </LinearLayout>
+
+</LinearLayout>

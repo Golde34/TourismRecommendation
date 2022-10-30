@@ -35,4 +35,5 @@ public class AccountController {
         map.put("message", accountService.signUp(accountDTO));
         return map;
     }
+
 }

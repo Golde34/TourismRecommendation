@@ -211,18 +211,18 @@ public class Account {
         Role role = new Role();
         JSONObject roleJson = role.toJson();
         try {
-            account.put("id", "1");
-            account.put("address", "gia loc");
-            account.put("DOB", "2001-04-03");
-            account.put("email", "nguyendongducviet2001@gmail.com");
-            account.put("fullname", "Nguyen Viet");
-            account.put("gender", "male");
-            account.put("image", null);
-            account.put("phoneNumber", "0343978156");
-            account.put("level", 0);
-            account.put("levelPoint", 0);
-            account.put("status", 1);
-            account.put("username", "golde");
+            account.put("id", getId());
+            account.put("address", getAddress());
+            account.put("DOB", getDOB());
+            account.put("email", getEmail());
+            account.put("fullname", getFullName());
+            account.put("gender", getGender());
+            account.put("image", getImage());
+            account.put("phoneNumber", getPhoneNumber());
+            account.put("level", getLevel());
+            account.put("levelPoint", getLevelPoint());
+            account.put("status", getStatus());
+            account.put("username", getUsername());
             account.put("role", roleJson);
             return account;
         } catch (JSONException e) {
