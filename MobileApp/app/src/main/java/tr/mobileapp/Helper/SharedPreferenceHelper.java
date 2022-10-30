@@ -14,7 +14,7 @@ import tr.mobileapp.Entity.Account;
 
 public class SharedPreferenceHelper {
 
-    public void storeDataToPref(Context context, String prefName, String key, String data) {
+    public static void storeDataToPref(Context context, String prefName, String key, String data) {
         SharedPreferences pref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         Gson gson = new Gson();
@@ -23,7 +23,7 @@ public class SharedPreferenceHelper {
         editor.apply();
     }
 
-    public String getDataFromPref(Context context, String prefName, String key) {
+    public static String getDataFromPref(Context context, String prefName, String key) {
         SharedPreferences pref = context.getSharedPreferences(prefName, MODE_PRIVATE);
         String json = pref.getString(key, "");
         return json;

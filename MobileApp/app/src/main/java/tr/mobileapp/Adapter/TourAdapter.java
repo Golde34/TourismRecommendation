@@ -33,8 +33,12 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull TourAdapter.ViewHolder holder, int position) {
-        Tour tour = tourArrayList.get(position);
-        holder.setTourData(tour);
+            Tour tour = tourArrayList.get(position);
+            if (tour != null) {
+                holder.setTourData(tour);
+            } else {
+                return;
+            }
     }
 
     @Override
@@ -59,7 +63,7 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder>{
         }
 
         public void setTourData(Tour tour) {
-            tvTourId.setText(tour.getId());
+            tvTourId.setText(String.valueOf(tour.getId()));
             tvStartDate.setText(tour.getStartDate().toString());
             tvEndDate.setText(tour.getEndDate().toString());
         }

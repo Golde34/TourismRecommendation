@@ -1,7 +1,7 @@
 package mvc.backend.backendserver.controller;
 
+import mvc.backend.backendserver.dto.RatingPOIDTO;
 import mvc.backend.backendserver.entity.RatingPOI;
-import mvc.backend.backendserver.entity.Tour;
 import mvc.backend.backendserver.repository.RatingPOIRepo;
 import mvc.backend.backendserver.service.interfaces.IRatingPOIService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +31,11 @@ public class ReviewPOIController {
     @PostMapping("/getRating1/{poiId}")
     public ResponseEntity<ArrayList<RatingPOI>> GetAllRatingPOIbyPoiID(@PathVariable int poiId){
         return new ResponseEntity<>(ratingPOIService.GetRatingPoiByPoiId1(poiId), HttpStatus.OK);
+    }
+    @PostMapping(value = "/Review")
+    public HttpStatus CrateReview(@RequestBody RatingPOIDTO ratingPOIDTO) {
+         ratingPOIService.CreateRating(ratingPOIDTO);
+        return HttpStatus.OK;
     }
 
 

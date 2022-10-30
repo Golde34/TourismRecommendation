@@ -1,30 +1,59 @@
 package tr.mobileapp.Activity;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 
 import tr.mobileapp.Adapter.Recyclerview_adapter;
+import tr.mobileapp.Entity.Account;
+import tr.mobileapp.Entity.MyPOI;
 import tr.mobileapp.Entity.ReviewPOI;
 import tr.mobileapp.R;
+import tr.mobileapp.VolleySingleton;
 
 public class MainReviewTwo extends AppCompatActivity {
 
     RecyclerView recyclerview;
+    private Button btnReview,btSummitReview;
+    private EditText idTitleReview, idCommentReview;
+    private RatingBar ratingBar;
+
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog alertDialog;
 
     Recyclerview_adapter adapter;
     private ProgressBar oneStar;
@@ -40,6 +69,10 @@ public class MainReviewTwo extends AppCompatActivity {
     private TextView totalVotingStarAverate;
     private TextView totalVotingStar;
 
+    Account acc = new Account();
+    int poiID = 1;
+    int myRating = 0;
+
  public void bindingView(){
      oneStar = findViewById(R.id.tv_Process1Star);
      twoStar = findViewById(R.id.tv_Process2Star);
@@ -54,6 +87,8 @@ public class MainReviewTwo extends AppCompatActivity {
      totalVotingStarAverate   = findViewById(R.id.tv_evarageOfStartVoting);
      totalVotingStar   = findViewById(R.id.tv_TotalVotingStart);
 
+
+
  }
 
 
@@ -63,6 +98,8 @@ public class MainReviewTwo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_review_two);
         bindingView();
+        bindingViewReviewPop();
+        bindingAction();
         recyclerview = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerview.setHasFixedSize(true);
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
@@ -110,45 +147,98 @@ public class MainReviewTwo extends AppCompatActivity {
         totalVotingStar.setText(String.valueOf(viewRatingCount.get("totalCount")));
         totalVotingStarAverate.setText(String.valueOf(viewRatingCount.get("totalCountAverage")));
     }
-//    public Dictionary ViewRatingProcess(  ArrayList<ReviewPOI> listReviewPOI){
-//     int totalProcess = 0;
-//     int star5 = 0;
-//     int star4 = 0;
-//     int star3 = 0;
-//     int star2 = 0;
-//     int star1 = 0;
-//
-//       for(int i=0; i<listReviewPOI.size();i++){
-//           if(listReviewPOI.get(i).getRate()==5){
-//               star5 += 5;
-//               totalProcess += 5;
-//           }
-//           if(listReviewPOI.get(i).getRate()==4){
-//               star4 += 4;
-//               totalProcess += 4;
-//           }
-//           if(listReviewPOI.get(i).getRate()==3){
-//               star3 += 3;
-//               totalProcess += 3;
-//           }
-//           if(listReviewPOI.get(i).getRate()==2){
-//               star2 += 2;
-//               totalProcess += 2;
-//           }
-//           if(listReviewPOI.get(i).getRate()==1){
-//               star1 += 1;
-//               totalProcess += 1;
-//           }
-//       }
-//        Dictionary averageProcess = new Hashtable();
-//        averageProcess.put("star1", star1);
-//        averageProcess.put("star2", star2);
-//        averageProcess.put("star3", star3);
-//        averageProcess.put("star4", star4);
-//        averageProcess.put("star5", star5);
-//        averageProcess.put("totalProcess", totalProcess);
-//        return averageProcess;
-//    }
+    public void bindingViewReviewPop() {
+        btnReview = findViewById(R.id.idbtReview);
+
+    }
+    private void bindingAction() {
+        btnReview.setOnClickListener(this::onIdWriteReview);
+    }
+    public void bindingReviewPopup(View popupView) {
+        btSummitReview = popupView.findViewById(R.id.btSummitReview);
+        idTitleReview = popupView.findViewById(R.id.idTitleReview);
+        idCommentReview = popupView.findViewById(R.id.idComment);
+        ratingBar = popupView.findViewById(R.id.idratingBar);
+
+    }
+    private void onSubmitReview(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Sync("http://10.0.2.2:8080/ReviewPOI/Review", this);
+        }
+    }
+    private void onIdWriteReview(View view) {
+        generateReviewPopup();
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void Sync(String url, Context context) {
+        JSONObject jsonObjectRequest = new JSONObject();
+
+        String Title = idTitleReview.getText().toString();
+        String Comment = idCommentReview.getText().toString();
+       myRating = (int) ratingBar.getRating();
+
+
+
+        try {
+            jsonObjectRequest.put("rate", myRating);
+            jsonObjectRequest.put("comment", Comment);
+            jsonObjectRequest.put("title", Title);
+            jsonObjectRequest.put("accountId", 5);
+            jsonObjectRequest.put("poiID", 1);
+
+           // jsonObjectRequest.put("timeCreate", LocalTime.now());
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(
+                Request.Method.POST, url, jsonObjectRequest,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Intent i = new Intent(context, MainReview.class);
+                        //i.putExtra("response", response.toString());
+                        startActivity(i);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("TAG", "Error: " + error.getMessage());
+            }
+        }) {
+
+            /**
+             * Passing some request headers
+             */
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+
+        };
+//        Volley.newRequestQueue(this).add(jsonObjReq);
+        VolleySingleton.getmInstance(getApplicationContext()).addToRequestQueue(jsonObjReq);
+//        VolleySingleton.getmInstance(getApplicationContext());
+    }
+
+    public void generateReviewPopup() {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View popupView = getLayoutInflater().inflate(R.layout.activity_popup_rating_poi, null);
+
+        // Input itinerary plan
+        bindingReviewPopup(popupView);
+        //datePicker();
+
+        dialogBuilder.setView(popupView);
+        alertDialog = dialogBuilder.create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialog.show();
+
+        // Button event
+        btSummitReview.setOnClickListener(this::onSubmitReview);
+    }
+
     public Dictionary ViewRatingCount(  ArrayList<ReviewPOI> listReviewPOI){
         int totalCount = 0;
         int star5 = 0;

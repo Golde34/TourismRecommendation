@@ -359,17 +359,18 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <TextView
+    <Button
+        android:id="@+id/idbtReview"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
+        android:layout_marginBottom="-1dp"
+        android:background="@drawable/rounded_btn"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
         android:letterSpacing="0.02"
         android:lineSpacingExtra="4sp"
-        android:text="load more (25)"
-        android:textColor="#fe2422"
+        android:text="Write Your Review"
         android:textSize="14sp" />
 
 

@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface POIRepo extends JpaRepository<MyPOI, Integer> {
-    public MyPOI findByPOIId(int POIId);
+    public MyPOI findMyPOIByPOIId(int POIId);
 
 }
