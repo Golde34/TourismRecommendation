@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/ReviewPOI")
@@ -33,9 +35,10 @@ public class ReviewPOIController {
         return new ResponseEntity<>(ratingPOIService.GetRatingPoiByPoiId1(poiId), HttpStatus.OK);
     }
     @PostMapping(value = "/Review")
-    public HttpStatus CrateReview(@RequestBody RatingPOIDTO ratingPOIDTO) {
-         ratingPOIService.CreateRating(ratingPOIDTO);
-        return HttpStatus.OK;
+    public Map<String, String> CrateReview(@RequestBody RatingPOIDTO ratingPOIDTO) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("message", ratingPOIService.CreateRating(ratingPOIDTO));
+        return map;
     }
 
 

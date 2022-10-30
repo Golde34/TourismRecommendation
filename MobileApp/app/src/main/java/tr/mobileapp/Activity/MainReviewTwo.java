@@ -25,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,6 +43,7 @@ import tr.mobileapp.Adapter.Recyclerview_adapter;
 import tr.mobileapp.Entity.Account;
 import tr.mobileapp.Entity.MyPOI;
 import tr.mobileapp.Entity.ReviewPOI;
+import tr.mobileapp.Helper.SharedPreferenceHelper;
 import tr.mobileapp.R;
 import tr.mobileapp.VolleySingleton;
 
@@ -69,9 +71,11 @@ public class MainReviewTwo extends AppCompatActivity {
     private TextView totalVotingStarAverate;
     private TextView totalVotingStar;
 
+    SharedPreferenceHelper sharedPreferenceHelper = new SharedPreferenceHelper();
     Account acc = new Account();
-    int poiID = 1;
+    int poiID;
     int myRating = 0;
+    String onResponse ="";
 
  public void bindingView(){
      oneStar = findViewById(R.id.tv_Process1Star);
@@ -106,6 +110,8 @@ public class MainReviewTwo extends AppCompatActivity {
         Intent intent = getIntent();
 
         String response = intent.getStringExtra("response");
+        poiID = intent.getIntExtra("poiID",1);
+       // onResponse =  intent.getStringExtra("response");
         JSONArray jsonObj;
 
         ArrayList<ReviewPOI> listReviewPOI = new ArrayList<>();
@@ -117,9 +123,13 @@ public class MainReviewTwo extends AppCompatActivity {
                 rvp.setRatingId(jsonObj.getJSONObject(i).getInt("ratingId"));
                 rvp.setRate(jsonObj.getJSONObject(i).getInt("rate"));
                 rvp.setComment(jsonObj.getJSONObject(i).getString("comment"));
+                rvp.setTitle(jsonObj.getJSONObject(i).getString("title"));
                 JSONObject Acount = jsonObj.getJSONObject(i).getJSONObject("account");
                 rvp.setAccountName(Acount.getString("fullName"));
                 listReviewPOI.add(rvp);
+//                JSONObject poi = jsonObj.getJSONObject(i).getJSONObject("poi");
+//                rvp.setPoiId(poi.getInt("poiid"));
+//                poiID = rvp.getPoiId();
             }
                 // rvp.setTimeCreate((reviewOfPOI.getJSONObject(i).getString("timeCreate")));
                 //ArrayList<Account> AcccountReview = new ArrayList<>();
@@ -172,7 +182,10 @@ public class MainReviewTwo extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void Sync(String url, Context context) {
         JSONObject jsonObjectRequest = new JSONObject();
+        String accountString = sharedPreferenceHelper.getDataFromPref(context, "MyPref", "account");
+        Gson gson = new Gson();
 
+        String accountId = gson.fromJson(accountString, Account.class).getId();
         String Title = idTitleReview.getText().toString();
         String Comment = idCommentReview.getText().toString();
        myRating = (int) ratingBar.getRating();
@@ -183,8 +196,8 @@ public class MainReviewTwo extends AppCompatActivity {
             jsonObjectRequest.put("rate", myRating);
             jsonObjectRequest.put("comment", Comment);
             jsonObjectRequest.put("title", Title);
-            jsonObjectRequest.put("accountId", 5);
-            jsonObjectRequest.put("poiID", 1);
+            jsonObjectRequest.put("accountId", String.valueOf(accountId));
+            jsonObjectRequest.put("poiID", poiID);
 
            // jsonObjectRequest.put("timeCreate", LocalTime.now());
         }catch (JSONException e) {
@@ -196,7 +209,7 @@ public class MainReviewTwo extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Intent i = new Intent(context, MainReview.class);
-                        //i.putExtra("response", response.toString());
+                        i.putExtra("poiID", poiID);
                         startActivity(i);
                     }
                 }, new Response.ErrorListener() {
@@ -271,19 +284,27 @@ public class MainReviewTwo extends AppCompatActivity {
 
         }
         Dictionary averageProcess = new Hashtable();
-        averageProcess.put("star1percent", (star1*100)/totalCount);
-        averageProcess.put("star2percent", (star2*100)/totalCount);
-        averageProcess.put("star3percent", (star3*100)/totalCount);
-        averageProcess.put("star4percent", (star4*100)/totalCount);
-        averageProcess.put("star5percent", (star5*100)/totalCount);
+        if(listReviewPOI.size()== 0){
+            averageProcess.put("star1percent", 0);
+            averageProcess.put("star2percent", 0);
+            averageProcess.put("star3percent", 0);
+            averageProcess.put("star4percent", 0);
+            averageProcess.put("star5percent", 0);
+            averageProcess.put("totalCountAverage", 0);
+        }else {
+            averageProcess.put("star1percent", (star1 * 100) / totalCount);
+            averageProcess.put("star2percent", (star2 * 100) / totalCount);
+            averageProcess.put("star3percent", (star3 * 100) / totalCount);
+            averageProcess.put("star4percent", (star4 * 100) / totalCount);
+            averageProcess.put("star5percent", (star5 * 100) / totalCount);
+            averageProcess.put("totalCountAverage", (star1*1 + star2*2+ star3*3 + star4*4+ star5*5)/totalCount);
+        }
         averageProcess.put("star1", star1);
         averageProcess.put("star2", star2);
         averageProcess.put("star3", star3);
         averageProcess.put("star4", star4);
         averageProcess.put("star5", star5);
         averageProcess.put("totalCount", totalCount);
-        averageProcess.put("totalCountAverage", (star1*1 + star2*2+ star3*3 + star4*4+ star5*5)/totalCount);
-
         return averageProcess;
     }
 

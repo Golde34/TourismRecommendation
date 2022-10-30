@@ -45,7 +45,7 @@ public class Recyclerview_adapter extends RecyclerView.Adapter<Recyclerview_adap
 
         holder.tv_rating.setText(String.valueOf(model_eating.getRate()));
 
-        holder.tv_title.setText(model_eating.getAccountName());
+        holder.tv_title.setText(model_eating.getTitle());
 
         holder.tv_des.setText(model_eating.getComment());
 

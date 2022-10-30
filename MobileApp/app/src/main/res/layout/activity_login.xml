@@ -7,42 +7,28 @@
     <ImageView
         android:id="@+id/idIVIcon"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="150dp"
         android:layout_marginTop="50dp"
         android:src="@drawable/ic_flight" />
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/idLLLanguage"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_centerVertical="true"-->
-<!--        android:layout_below="@+id/idIVIcon"-->
-<!--        >-->
+    <LinearLayout
+        android:id="@+id/idLLLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/idIVIcon"
+        >
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="English"-->
-<!--            android:textSize="15dp"-->
-<!--            android:textColor="@color/grey"-->
-<!--            />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="𝑻𝒐𝒖𝒓𝒊𝒔𝒎𝒂"
+            android:textSize="40sp"
+            android:textColor="@color/grey"
+            />
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingHorizontal="7dp"-->
-<!--            android:text="•"-->
-<!--            android:textColor="@color/black"-->
-<!--            />-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Change"-->
-<!--            android:textColor="@color/black"-->
-<!--            />-->
-<!--    </LinearLayout>-->
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/idLLLogin"
@@ -51,7 +37,7 @@
         android:layout_below="@id/idIVIcon"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:orientation="vertical"
         >
 

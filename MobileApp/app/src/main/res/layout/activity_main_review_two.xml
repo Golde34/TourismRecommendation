@@ -361,16 +361,18 @@
 
     <Button
         android:id="@+id/idbtReview"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="214dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="-1dp"
-        android:background="@drawable/rounded_btn"
+        android:layout_marginLeft="95dp"
+        android:layout_marginBottom="0dp"
+        android:backgroundTint="#ff7134"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
         android:letterSpacing="0.02"
         android:lineSpacingExtra="4sp"
         android:text="Write Your Review"
+        android:textColor="@color/white"
         android:textSize="14sp" />
 
 

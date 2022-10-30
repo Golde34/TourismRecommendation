@@ -10,6 +10,25 @@ public class ReviewPOI {
     private String comment;
     private Date timeCreate;
     private String accountName;
+    private int poiId;
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getPoiId() {
+        return poiId;
+    }
+
+    public void setPoiId(int poiId) {
+        this.poiId = poiId;
+    }
+
     private ArrayList<Account> getAccountCommentReviewPOI = new ArrayList<>();
 
     public String getAccountName() {

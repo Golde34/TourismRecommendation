@@ -4,11 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,16 +34,20 @@ import tr.mobileapp.Entity.MyPOI;
 import tr.mobileapp.Entity.POIOfDay;
 import tr.mobileapp.R;
 import tr.mobileapp.Ultility.RecyclerItemClickListener;
+import tr.mobileapp.VolleySingleton;
 
 public class TripPlanActivity extends AppCompatActivity {
 
     private RecyclerView rcvTripDetail;
     private RecyclerView rcvDayOfTrip;
+    private Button btnReviewPOI;
+
     ArrayList<POIOfDay> poiOfDays;
 
     public void bindingView(){
         rcvTripDetail = findViewById(R.id.idRcvTripDetail);
         rcvDayOfTrip = findViewById(R.id.idRcvDayOfTrip);
+        btnReviewPOI = findViewById(R.id.idBTNBook);
     }
 
     @Override
@@ -118,6 +131,7 @@ public class TripPlanActivity extends AppCompatActivity {
                 poiOfDays.clear();
                 poiOfDays.addAll(dayOfTripArrayList.get(position).getPoiOfDays());
                 adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -125,5 +139,29 @@ public class TripPlanActivity extends AppCompatActivity {
 
             }
         }));
+
+    }
+
+    private void Sync(String url, Context context)  {
+        JsonArrayRequest jsonArrReq = new JsonArrayRequest(Request.Method.POST,
+                url+"1",null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Intent i = new Intent(context, MainReviewTwo.class);
+                        i.putExtra("response", response.toString());
+
+                        startActivity(i);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("TAG", "Error: " + error.getMessage());
+            }
+        });
+        VolleySingleton.getmInstance(getApplicationContext()).addToRequestQueue(jsonArrReq);
+    }
+    private void TakeReviewPOI() {
+        Sync("http://10.0.2.2:8080/ReviewPOI/getRating1/", this);
     }
 }

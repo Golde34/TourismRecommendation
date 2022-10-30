@@ -8,8 +8,8 @@
         android:title="Item"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/idItemFavourite"
-        android:icon="@drawable/ic_baseline_favorite_24"
+        android:id="@+id/idItemWeather"
+        android:icon="@drawable/ic_baseline_cloud_24"
         android:title="Item"
         app:showAsAction="ifRoom" />
     <item

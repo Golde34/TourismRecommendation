@@ -4,566 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f8f8f8"
-    tools:context=".MainActivity">
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical"
+    tools:context=".Activity.MainReview">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar_one"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:fillViewport="true"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="2dp"
-                app:cardElevation="2dp">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_gradient"
-                    android:orientation="horizontal">
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginRight="32dp"
-                        android:layout_marginBottom="23dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:gravity="center_horizontal"
-                            android:letterSpacing="0.01"
-                            android:lineSpacingExtra="23sp"
-                            android:text="4.2"
-                            android:textColor="#ffffff"
-                            android:textSize="46sp" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/review_img" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="7dp"
-
-                            android:fontFamily="@font/poppins_medium"
-                            android:gravity="center_horizontal"
-                            android:letterSpacing="0.01"
-                            android:lineSpacingExtra="7sp"
-                            android:text="52,289"
-                            android:textColor="#ffffff"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="21dp"
-                        android:layout_marginLeft="21dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="21dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_medium"
-                                android:gravity="center_horizontal"
-                                android:letterSpacing="0.01"
-                                android:lineSpacingExtra="6sp"
-                                android:text="5"
-                                android:textColor="#ffffff"
-                                android:textSize="12sp" />
-
-                            <ProgressBar
-                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="8dp"
-                                android:indeterminate="false"
-                                android:max="100"
-                                android:progress="80" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_medium"
-                                android:gravity="center_horizontal"
-                                android:letterSpacing="0.01"
-                                android:lineSpacingExtra="6sp"
-                                android:text="4"
-                                android:textColor="#ffffff"
-                                android:textSize="12sp" />
-
-                            <ProgressBar
-                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="8dp"
-                                android:indeterminate="false"
-                                android:max="100"
-                                android:progress="60" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_medium"
-                                android:gravity="center_horizontal"
-                                android:letterSpacing="0.01"
-                                android:lineSpacingExtra="6sp"
-                                android:text="3"
-                                android:textColor="#ffffff"
-                                android:textSize="12sp" />
-
-                            <ProgressBar
-                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="8dp"
-                                android:indeterminate="false"
-                                android:max="100"
-                                android:progress="70" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_medium"
-                                android:gravity="center_horizontal"
-                                android:letterSpacing="0.01"
-                                android:lineSpacingExtra="6sp"
-                                android:text="2"
-                                android:textColor="#ffffff"
-                                android:textSize="12sp" />
-
-                            <ProgressBar
-                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="8dp"
-                                android:indeterminate="false"
-                                android:max="100"
-                                android:progress="50" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_medium"
-                                android:gravity="center_horizontal"
-                                android:letterSpacing="0.01"
-                                android:lineSpacingExtra="6sp"
-                                android:text="1"
-                                android:textColor="#ffffff"
-                                android:textSize="12sp" />
-
-                            <ProgressBar
-                                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="8dp"
-                                android:indeterminate="false"
-                                android:max="100"
-                                android:progress="30" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/rect_gray_border"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
-                android:lineSpacingExtra="4sp"
-                android:paddingTop="13dp"
-                android:paddingBottom="13dp"
-                android:text="Write a review"
-                android:textColor="#802bff"
-                android:textSize="14sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/rect_gray_border"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="23dp"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginEnd="21dp"
-                    android:layout_marginRight="21dp"
-                    android:layout_marginBottom="19dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-
-                        <FrameLayout
-                            android:layout_width="38dp"
-                            android:layout_height="38dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/circle_shape">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/user" />
-
-
-                        </FrameLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
-                            android:layout_marginLeft="14dp"
-                            android:orientation="vertical">
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_semibold"
-                                android:lineSpacingExtra="4sp"
-                                android:text="App Verified User"
-                                android:textColor="#3b3b3b"
-                                android:textSize="14sp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
-                                android:orientation="horizontal">
-
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/review_img"
-                                    app:tint="#8837ff" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="5dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:fontFamily="@font/poppins_semibold"
-                                    android:gravity="center_horizontal"
-                                    android:letterSpacing="0.01"
-                                    android:lineSpacingExtra="6sp"
-                                    android:text="4.8"
-                                    android:textColor="#8837ff"
-                                    android:textSize="12sp" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:lineSpacingExtra="6sp"
-                        android:text="Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antiudm dolasor emque laudan tb eatae vitaae suant explicabo."
-                        android:textColor="#4d4d4d"
-                        android:textSize="12sp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="14dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:src="@drawable/like" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:src="@drawable/dislike" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginLeft="12dp"
-                            android:fontFamily="@font/poppins_medium"
-                            android:gravity="center_horizontal"
-                            android:letterSpacing="0.01"
-                            android:lineSpacingExtra="6sp"
-                            android:text="Was this review helpful?"
-                            android:textColor="#444444"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="80dp"
-                android:background="@drawable/rect_gray_border"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="23dp"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginEnd="21dp"
-                    android:layout_marginRight="21dp"
-                    android:layout_marginBottom="19dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
-
-
-                        <FrameLayout
-                            android:layout_width="38dp"
-                            android:layout_height="38dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/circle_shape">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/user" />
-
-
-                        </FrameLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="14dp"
-                            android:layout_marginLeft="14dp"
-                            android:orientation="vertical">
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins_semibold"
-                                android:lineSpacingExtra="4sp"
-                                android:text="Lookie Adams"
-                                android:textColor="#3b3b3b"
-                                android:textSize="14sp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="5dp"
-                                android:orientation="horizontal">
-
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/review_img"
-                                    app:tint="#8837ff" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="5dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:fontFamily="@font/poppins_semibold"
-                                    android:gravity="center_horizontal"
-                                    android:letterSpacing="0.01"
-                                    android:lineSpacingExtra="6sp"
-                                    android:text="4.8"
-                                    android:textColor="#8837ff"
-                                    android:textSize="12sp" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:lineSpacingExtra="6sp"
-                        android:text="Sed ut perspiciatis unde omnis iste natus error sit volup tatem accus antiudm dolasor emque laudan tb eatae vitaae suant explicabo."
-                        android:textColor="#4d4d4d"
-                        android:textSize="12sp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="14dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/like" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:src="@drawable/dislike" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginLeft="12dp"
-                            android:fontFamily="@font/poppins_medium"
-                            android:gravity="center_horizontal"
-                            android:letterSpacing="0.01"
-                            android:lineSpacingExtra="6sp"
-                            android:text="Was this review helpful?"
-                            android:textColor="#444444"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
 
     <TextView
+        android:id="@+id/idTitle"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:text="Thank you for Your Review!"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         android:fontFamily="@font/poppins_semibold"
-        android:gravity="center"
-        android:letterSpacing="0.02"
-        android:lineSpacingExtra="4sp"
-        android:textColor="#802bff"
-        android:textSize="14sp"
-        android:text="see all reviews" />
+        android:textSize="25sp" />
+    <TextView
+        android:id="@+id/idmessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:text="Reviews like yours really support local florist by helping people discover us."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="20sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/idYourReviewtext"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/idmessage"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:text="Your Review:"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="20sp" />-->
+
+<!--    <RatingBar-->
+<!--        android:id="@+id/idratingBar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/idYourReviewtext"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginLeft="50dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:layout_marginRight="50dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:progressTint="#ff7134"-->
+<!--        android:isIndicator="false"-->
+<!--        android:numStars="5"-->
+<!--        android:rating="3"-->
+<!--        android:stepSize="1" />-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/idYourReview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/idratingBar"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:text=""-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="20sp" />-->
+    <Button
+        android:id="@+id/btGoBackReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idmessage"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="100dp"
+        android:backgroundTint="#ff7134"
+        android:textColor="@color/white"
+        android:text="Go Back to review screen" />
+
+
+
 
 </RelativeLayout>
