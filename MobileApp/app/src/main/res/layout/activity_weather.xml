@@ -10,54 +10,57 @@
         android:id="@+id/iPBLoading"
         android:layout_width="89dp"
         android:layout_height="83dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.438"
-        android:visibility="gone"
-        />
+        app:layout_constraintVertical_bias="0.438" />
 
     <RelativeLayout
         android:id="@+id/idRLHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bg_weather_2"
         android:visibility="visible">
 
         <ImageView
             android:id="@+id/idTVBack"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@color/black_shade_1" />
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/idTVCityName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="monospace"
             android:gravity="center"
-            android:padding="20dp"
+            android:padding="10dp"
             android:text="City Name"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="25sp" />
 
         <LinearLayout
+
             android:id="@+id/idLLEdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/idTVCityName"
             android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             android:weightSum="5">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/idTILCity"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:layout_weight="4.5"
-                android:background="@android:color/transparent"
+                android:fontFamily="monospace"
                 android:hint="Enter City Name"
                 android:padding="5dp"
                 android:textColorHint="@color/white"
@@ -67,17 +70,17 @@
                     android:id="@+id/idEdtCity"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <ImageView
                 android:id="@+id/idIVSearch"
-                android:layout_width="0dp"
-                android:layout_height="42dp"
+                android:layout_width="37dp"
+                android:layout_height="65dp"
                 android:layout_margin="18dp"
                 android:layout_weight="0.5"
                 android:background="@android:color/transparent"
@@ -91,44 +94,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/idLLEdt"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
+            android:fontFamily="monospace"
             android:gravity="center_horizontal"
             android:padding="5dp"
-            android:text="30"
             android:textColor="@color/white"
-            android:textSize="70dp" />
+            android:textSize="80dp" />
 
         <ImageView
             android:id="@+id/idIVIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_below="@+id/idTVTemperature"
             android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_launcher"
-
-            />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp" />
 
         <TextView
             android:id="@+id/idTVCondition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/idIVIcon"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
+            android:fontFamily="monospace"
             android:gravity="center"
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="25dp" />
 
         <TextView
+            android:id="@+id/idTVWeather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/idTVCondition"
-            android:id="@+id/idTVWeather"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:text="Today's Weather Forecast"
             android:textColor="@color/white"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -136,6 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/idTVWeather"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </RelativeLayout>
