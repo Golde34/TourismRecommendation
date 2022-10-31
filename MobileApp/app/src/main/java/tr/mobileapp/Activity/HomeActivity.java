@@ -64,7 +64,6 @@ public class HomeActivity extends AppCompatActivity {
     private AlertDialog alertDialog;
     private ImageSlider imageSlider;
 
-
     DatePickerDialog.OnDateSetListener setStartDateListener, setEndDateListener;
     RequestQueue requestQueue;
     private GenerateTripValidate generateTripValidate = new GenerateTripValidate();

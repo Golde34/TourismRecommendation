@@ -22,8 +22,18 @@
             android:layout_centerHorizontal="true"
             android:orientation="horizontal"
             android:layout_gravity="center"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" >
+
+        </androidx.recyclerview.widget.RecyclerView>
             />
+
+        <Button
+            android:id="@+id/btnViewHotel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Resting Place"
+            android:textColor="@color/white" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idRcvTripDetail"
             android:layout_width="wrap_content"
@@ -32,7 +42,10 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
     </LinearLayout>
 
 </RelativeLayout>

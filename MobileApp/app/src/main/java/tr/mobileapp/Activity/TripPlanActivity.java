@@ -1,11 +1,13 @@
 package tr.mobileapp.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -25,7 +28,9 @@ import org.json.JSONObject;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import tr.mobileapp.Adapter.TripDateAdapter;
 import tr.mobileapp.Adapter.TripDetailRVAdapter;
@@ -42,12 +47,70 @@ public class TripPlanActivity extends AppCompatActivity {
     private RecyclerView rcvDayOfTrip;
     private Button btnReviewPOI;
 
+    private Button btnViewHotel;
+
     ArrayList<POIOfDay> poiOfDays;
 
     public void bindingView(){
         rcvTripDetail = findViewById(R.id.idRcvTripDetail);
         rcvDayOfTrip = findViewById(R.id.idRcvDayOfTrip);
         btnReviewPOI = findViewById(R.id.idBTNBook);
+
+        btnViewHotel = findViewById(R.id.btnViewHotel);
+    }
+
+    private void bindingAction()
+    {
+        btnViewHotel.setOnClickListener(this::oBtnViewHotelClick);
+    }
+
+    private void oBtnViewHotelClick(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            SyncViewHotel("http://10.0.2.2:8080/restingplace/all", this);
+        }
+    }
+
+    private int randomSeed;
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void SyncViewHotel(String url, Context context) {
+        JSONArray jsonObjectRequest = new JSONArray();
+
+        Log.d("TEST", "-------------");
+        Log.d("TEST", jsonObjectRequest.toString());
+        // Make request for JSONObject
+        JsonArrayRequest jsonObjReq = new JsonArrayRequest(
+                Request.Method.GET, url, jsonObjectRequest,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Intent i = new Intent(context, ViewHotel.class);
+                        i.putExtra("response", response.toString());
+                        i.putExtra("randomSeed", randomSeed);
+
+                        startActivity(i);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("TAG", "Error: " + error.getMessage());
+            }
+        }) {
+
+            /**
+             * Passing some request headers
+             */
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+
+        };
+//        Volley.newRequestQueue(this).add(jsonObjReq);
+        VolleySingleton.getmInstance(getApplicationContext()).addToRequestQueue(jsonObjReq);
+//        VolleySingleton.getmInstance(getApplicationContext());
+
     }
 
     @Override
@@ -56,6 +119,7 @@ public class TripPlanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trip_plan);
 
         bindingView();
+        bindingAction();
 
         Intent intent = getIntent();
 
@@ -116,6 +180,9 @@ public class TripPlanActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        // Dung xoa cua toi, cai nay de lay random resting place
+        randomSeed = dayOfTripArrayList.size();
 
         TripDateAdapter dateAdapter = new TripDateAdapter(this, dayOfTripArrayList);
         rcvDayOfTrip.setAdapter(dateAdapter);

@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.gson.JsonArray;
 
@@ -22,16 +24,19 @@ import tr.mobileapp.R;
 public class ViewHotel extends AppCompatActivity {
 
     private RecyclerView rcvHotelList;
+    private Button btnReturn;
 
     private void bindingView()
     {
         rcvHotelList = findViewById(R.id.rcvHotelList);
+        btnReturn = findViewById(R.id.btnReturn);
     }
 
     private void bindingAction()
     {
         Intent intent = getIntent();
         String response = intent.getStringExtra("response");
+        int randomSeed = intent.getIntExtra("randomSeed", 0);
         ArrayList<RestingPlace> restingPlaceArrayList = new ArrayList<>();
 
         try
@@ -58,10 +63,19 @@ public class ViewHotel extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        HotelAdapter adapter = new HotelAdapter(this, restingPlaceArrayList);
+        ArrayList<RestingPlace> singleRestingPlace = new ArrayList<>();
+        int size = restingPlaceArrayList.size();
+        singleRestingPlace.add(restingPlaceArrayList.get(randomSeed % size));
+
+        HotelAdapter adapter = new HotelAdapter(this, singleRestingPlace);
         rcvHotelList.setAdapter(adapter);
         rcvHotelList.setLayoutManager(new LinearLayoutManager(this));
 
+        btnReturn.setOnClickListener(this::onBtnReturnClick);
+    }
+
+    private void onBtnReturnClick(View view) {
+        finish();
     }
 
     @Override
