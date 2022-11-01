@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -52,8 +53,9 @@ public class ViewHotel extends AppCompatActivity {
                 place.setName(restingPlaces.getJSONObject(i).getString("name"));
                 place.setLocation(restingPlaces.getJSONObject(i).getString("location"));
                 place.setPrice(restingPlaces.getJSONObject(i).getDouble("price"));
-                place.setTotalRating(restingPlaces.getJSONObject(i).getInt("totalRating"));
+                place.setTotalRating(restingPlaces.getJSONObject(i).getDouble("totalRating"));
                 place.setCityName(restingPlaces.getJSONObject(i).getJSONObject("city").getString("cityName"));
+                place.setImage(restingPlaces.getJSONObject(i).getString("image"));
 
                 restingPlaceArrayList.add(place);
             }
@@ -66,6 +68,7 @@ public class ViewHotel extends AppCompatActivity {
         ArrayList<RestingPlace> singleRestingPlace = new ArrayList<>();
         int size = restingPlaceArrayList.size();
         singleRestingPlace.add(restingPlaceArrayList.get(randomSeed % size));
+        Log.d("TEST", size + " " + randomSeed);
 
         HotelAdapter adapter = new HotelAdapter(this, singleRestingPlace);
         rcvHotelList.setAdapter(adapter);

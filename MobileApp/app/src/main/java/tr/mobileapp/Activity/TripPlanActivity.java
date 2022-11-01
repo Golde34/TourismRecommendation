@@ -181,13 +181,13 @@ public class TripPlanActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // Dung xoa cua toi, cai nay de lay random resting place
-        randomSeed = dayOfTripArrayList.size();
-
         TripDateAdapter dateAdapter = new TripDateAdapter(this, dayOfTripArrayList);
         rcvDayOfTrip.setAdapter(dateAdapter);
 
         poiOfDays = new ArrayList<>(dayOfTripArrayList.get(0).getPoiOfDays());
+
+        // Dung xoa cua toi, cai nay de lay random resting place
+        randomSeed = poiOfDays.size();
 
         TripDetailRVAdapter adapter = new TripDetailRVAdapter(this, poiOfDays);
         rcvTripDetail.setAdapter(adapter);

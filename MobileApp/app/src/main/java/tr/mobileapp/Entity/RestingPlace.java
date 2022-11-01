@@ -10,6 +10,7 @@ public class RestingPlace {
     private double price;
     private double totalRating;
     private String cityName;
+    private String image;
 
     public int getId() {
         return id;
@@ -81,5 +82,13 @@ public class RestingPlace {
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -60,6 +60,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView txtHotelName, txtHotelLocation, txtHotelPrice, txtHotelTime, txtHotelDescription;
         private RatingBar rbHotelRating;
+        private TextView txtRatingNum;
         private ImageView imgHotelImage;
         private Context context;
 
@@ -71,6 +72,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
             txtHotelTime = view.findViewById(R.id.txtHotelTime);
             txtHotelDescription = view.findViewById(R.id.txtHotelDescription);
             rbHotelRating = view.findViewById(R.id.rbHotelRating);
+            txtRatingNum = view.findViewById(R.id.txtRatingNum);
             imgHotelImage = view.findViewById(R.id.imgHotelImage);
         }
 
@@ -89,8 +91,10 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
                     .append(convertDoubleToHour(restingPlace.getCloseTime())).toString());
             txtHotelDescription.setText(restingPlace.getDescription());
             rbHotelRating.setRating((float)restingPlace.getTotalRating());
+            txtRatingNum.setText(new StringBuilder().append(restingPlace.getTotalRating()).toString());
 
-            int imgId = itemView.getResources().getIdentifier("img_hotel", "drawable", context.getPackageName());
+            String picName = restingPlace.getImage();
+            int imgId = itemView.getResources().getIdentifier(picName, "drawable", context.getPackageName());
             imgHotelImage.setImageResource(imgId);
         }
 

@@ -52,6 +52,14 @@
                     android:theme="@style/RatingBar" />
 
                 <TextView
+                    android:id="@+id/txtRatingNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtHotelName"
+                    android:layout_toRightOf="@id/rbHotelRating"
+                    android:text="4.5" />
+
+                <TextView
                     android:id="@+id/txtHotelLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -103,10 +111,10 @@
             android:layout_height="match_parent"
             android:layout_below="@id/layoutPrice"
             android:layout_marginTop="10dp"
-            android:background="@color/white"
+            android:background="@drawable/rounded_corner"
             android:padding="10dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elementum odio eget pellentesque suscipit. Praesent ullamcorper euismod nibh. Aenean pellentesque et neque vel pellentesque. Quisque vel diam vel tortor congue semper ut fringilla diam. Mauris tempus tempor lorem."
-            android:textSize="16sp" />
+            android:textSize="15sp" />
 
     </RelativeLayout>
 
