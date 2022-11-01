@@ -2,7 +2,6 @@ package tr.mobileapp.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +18,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,8 +27,8 @@ import java.util.Map;
 
 import tr.mobileapp.Entity.Account;
 import tr.mobileapp.Helper.SharedPreferenceHelper;
-import tr.mobileapp.MainActivity;
 import tr.mobileapp.R;
+import tr.mobileapp.Ultility.ValidationUtil;
 import tr.mobileapp.VolleySingleton;
 
 public class LoginActivity extends AppCompatActivity {
@@ -59,8 +57,14 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.d("TEST", "start to login");
 
-        String username = idEDTUserNameLogin.getText().toString();
-        String password = idEDTPassLogin.getText().toString();
+        String username = ValidationUtil.getTrim(idEDTUserNameLogin);
+        String password = ValidationUtil.getTrim(idEDTPassLogin);
+
+        if(ValidationUtil.isInputBlank(username, idEDTUserNameLogin) ||
+        ValidationUtil.isInputBlank(password, idEDTPassLogin)){
+            Toast.makeText(this, "Input cannot be blank", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         Sync("http://10.0.2.2:8080/account/login", username, password, this);
     }
@@ -76,8 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         Log.d("TEST", "CREATE NE");
         setContentView(R.layout.activity_login);
 
-        String jsonAccount = sharedPreferenceHelper.getDataFromPref
-                (this, "MyPref", "account");
+        String jsonAccount = SharedPreferenceHelper.getDataFromPref(this, "MyPref", "account");
         if(null != jsonAccount){
             Intent i = new Intent(this, HomeActivity.class);
             finish();
@@ -131,7 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onResponse(JSONObject response) {
                             if(!response.toString().isEmpty()) {
                                 Log.i("response", response.toString());
-                                sharedPreferenceHelper.storeDataToPref(context, "MyPref", "account", response.toString());
+                                SharedPreferenceHelper.storeDataToPref(context, "MyPref", "account", response.toString());
                                 Intent i = new Intent(context, HomeActivity.class);
                                 finish();
                                 startActivity(i);
