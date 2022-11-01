@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -28,6 +27,7 @@ import java.util.Map;
 
 import tr.mobileapp.Entity.Account;
 import tr.mobileapp.R;
+import tr.mobileapp.Ultility.ValidationUtil;
 import tr.mobileapp.VolleySingleton;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -54,15 +54,18 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void onBtnRegister(View view) {
 
-        String username = getTrim(idEDTUserNameSignUp);
-        String password = getTrim(idEDTPassword);
-        String email = getTrim(idEDTEmail);
-        String phone = getTrim(idEDTPhone);
+        String username = ValidationUtil.getTrim(idEDTUserNameSignUp);
+        String password = ValidationUtil.getTrim(idEDTPassword);
+        String email = ValidationUtil.getTrim(idEDTEmail);
+        String phone = ValidationUtil.getTrim(idEDTPhone);
 
-        checkInputBlank(username, idEDTUserNameSignUp);
-        checkInputBlank(password, idEDTPassword);
-        checkInputBlank(email, idEDTEmail);
-        checkInputBlank(phone, idEDTPhone);
+        if (ValidationUtil.isInputBlank(username, idEDTUserNameSignUp) ||
+                ValidationUtil.isInputBlank(password, idEDTPassword) ||
+                ValidationUtil.isInputBlank(email, idEDTEmail) ||
+                ValidationUtil.isInputBlank(phone, idEDTPhone)) {
+            Toast.makeText(this, "Input cannot be blank", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         Account account = new Account(username, password, email, phone);
 
@@ -130,17 +133,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void showError() {
 
-    }
-
-    @NonNull
-    private String getTrim(EditText idEDTUserNameSignUp) {
-        return idEDTUserNameSignUp.getText().toString().trim();
-    }
-
-    private void checkInputBlank(String input, EditText edt) {
-        if (input.equalsIgnoreCase("")) {
-            edt.setError("This field can not be blank");
-        }
     }
 
     private void onLLToLogin(View view) {

@@ -4,6 +4,9 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.EditText;
+
+import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 
