@@ -10,6 +10,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static mvc.backend.backendserver.config.RegexValidate.PHONE_REGEX;
+
 @Service
 public class AccountService implements IAccountService {
 
@@ -67,6 +69,11 @@ public class AccountService implements IAccountService {
 
         if (accountRepo.existsAccountByPhoneNumber(accountDTO.getPhoneNumber())) {
             responseMessage = "Phone number is duplicated";
+            return responseMessage;
+        }
+
+        if (!accountDTO.getPhoneNumber().matches(PHONE_REGEX)) {
+            responseMessage = "Phone is not valid, must be VN phone";
             return responseMessage;
         }
 

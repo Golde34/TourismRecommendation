@@ -67,6 +67,16 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
+        if (!ValidationUtil.isValidEmail(email)) {
+            Toast.makeText(this, "Email is not valid", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (!ValidationUtil.isValidVNPhone(phone)) {
+            Toast.makeText(this, "Phone is not valid, must be VN phone", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         Account account = new Account(username, password, email, phone);
 
         Sync("http://10.0.2.2:8080/account/signup", account, this);

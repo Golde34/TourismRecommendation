@@ -270,7 +270,6 @@ public class HomeActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         Intent i = new Intent(context, TripPlanActivity.class);
                         i.putExtra("response", response.toString());
-
                         startActivity(i);
                     }
                 }, new Response.ErrorListener() {
