@@ -3,6 +3,7 @@ package tr.mobileapp.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -64,11 +65,10 @@ public class HomeActivity extends AppCompatActivity {
     private AlertDialog alertDialog;
     private ImageSlider imageSlider;
 
-
     DatePickerDialog.OnDateSetListener setStartDateListener, setEndDateListener;
     RequestQueue requestQueue;
     private GenerateTripValidate generateTripValidate = new GenerateTripValidate();
-    SharedPreferenceHelper sharedPreferenceHelper = new SharedPreferenceHelper();
+//    SharedPreferenceHelper sharedPreferenceHelper = new SharedPreferenceHelper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,13 +125,22 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.idItemSavedTrip:
-                moveToSavedStrip("http://10.0.2.2:8080/trip/getByAccount/1", this);
+                moveToSavedStrip("http://10.0.2.2:8080/trip/getByAccount/", this);
                 return true;
             case R.id.idItemWeather:
                 Intent i = new Intent(this, WeatherActivity.class);
                 startActivity(i);
                 return true;
             case R.id.idItemSetting:
+                return true;
+            case R.id.change_theme:
+                return true;
+            case R.id.log_out:
+                SharedPreferences settings = this.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+                settings.edit().clear().apply();
+                Intent intentLogin = new Intent(this, LoginActivity.class);
+                finish();
+                startActivity(intentLogin);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -141,7 +150,7 @@ public class HomeActivity extends AppCompatActivity {
         JSONObject jsonObjectRequest = new JSONObject();
 
         // add walletId account
-        String accountString = sharedPreferenceHelper.getDataFromPref(context, "MyPref", "account");
+        String accountString = SharedPreferenceHelper.getDataFromPref(context, "MyPref", "account");
         Gson gson = new Gson();
         String accountId = gson.fromJson(accountString, Account.class).getId();
 
@@ -149,7 +158,7 @@ public class HomeActivity extends AppCompatActivity {
         Log.d("TEST", jsonObjectRequest.toString());
         // Make request for JSONObject
         JsonArrayRequest jsonArrayReq = new JsonArrayRequest(
-                Request.Method.GET, url, null,
+                Request.Method.GET, url + accountId, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -222,7 +231,7 @@ public class HomeActivity extends AppCompatActivity {
         JSONObject jsonObjectRequest = new JSONObject();
         try {
             // add walletId account
-            String accountString = sharedPreferenceHelper.getDataFromPref(context, "MyPref", "account");
+            String accountString = SharedPreferenceHelper.getDataFromPref(context, "MyPref", "account");
             Gson gson = new Gson();
             JSONObject account = gson.fromJson(accountString, Account.class).toJson();
 //            Account accountE = new Account();

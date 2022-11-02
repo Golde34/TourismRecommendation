@@ -4,7 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -58,7 +59,9 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView txtHotelName, txtHotelLocation, txtHotelPrice, txtHotelTime, txtHotelDescription;
-        private Button btnBookHotel;
+        private RatingBar rbHotelRating;
+        private TextView txtRatingNum;
+        private ImageView imgHotelImage;
         private Context context;
 
         private void bindingView(View view)
@@ -68,7 +71,9 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
             txtHotelPrice = view.findViewById(R.id.txtHotelPrice);
             txtHotelTime = view.findViewById(R.id.txtHotelTime);
             txtHotelDescription = view.findViewById(R.id.txtHotelDescription);
-            btnBookHotel = view.findViewById(R.id.btnBookHotel);
+            rbHotelRating = view.findViewById(R.id.rbHotelRating);
+            txtRatingNum = view.findViewById(R.id.txtRatingNum);
+            imgHotelImage = view.findViewById(R.id.imgHotelImage);
         }
 
         private void bindingAction()
@@ -80,11 +85,17 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
         {
             txtHotelName.setText(restingPlace.getName());
             txtHotelLocation.setText(restingPlace.getLocation());
-            txtHotelPrice.setText(new StringBuilder().append(restingPlace.getPrice()).append(" VND/night").toString());
+            txtHotelPrice.setText(new StringBuilder().append((int)restingPlace.getPrice()).append(" VND/night").toString());
             txtHotelTime.setText(new StringBuilder().append("Open from: ")
                     .append(convertDoubleToHour(restingPlace.getOpenTime())).append(" - ")
                     .append(convertDoubleToHour(restingPlace.getCloseTime())).toString());
             txtHotelDescription.setText(restingPlace.getDescription());
+            rbHotelRating.setRating((float)restingPlace.getTotalRating());
+            txtRatingNum.setText(new StringBuilder().append(restingPlace.getTotalRating()).toString());
+
+            String picName = restingPlace.getImage();
+            int imgId = itemView.getResources().getIdentifier(picName, "drawable", context.getPackageName());
+            imgHotelImage.setImageResource(imgId);
         }
 
         public String convertDoubleToHour(double doubleHour)  throws ParseException {

@@ -29,6 +29,10 @@ public class AccountService implements IAccountService {
 
     @Override
     public Account login(String username, String password) {
+        if (username.trim().equals("") ||
+                password.trim().equals("")) {
+            return null;
+        }
 
         Account account = accountRepo.findAccountByUsername(username);
 
@@ -38,21 +42,30 @@ public class AccountService implements IAccountService {
 
         return null;
     }
+
     @Override
     public String signUp(AccountDTO accountDTO) {
         String responseMessage = "Signup successfully";
-        System.out.println(accountDTO.toString());
-        if(accountRepo.existsAccountByUsername(accountDTO.getUsername())) {
+        System.out.println("DEBUG" + accountDTO.toString());
+
+        if (accountDTO.getUsername().trim().equals("") ||
+                accountDTO.getPassword().trim().equals("") ||
+                accountDTO.getEmail().trim().equals("") ||
+                accountDTO.getPhoneNumber().trim().equals("")) {
+            responseMessage = "Input cannot be blank";
+        }
+
+        if (accountRepo.existsAccountByUsername(accountDTO.getUsername())) {
             responseMessage = "Username is duplicated";
             return responseMessage;
         }
 
-        if(accountRepo.existsAccountByEmail(accountDTO.getEmail())) {
+        if (accountRepo.existsAccountByEmail(accountDTO.getEmail())) {
             responseMessage = "Email is duplicated";
             return responseMessage;
         }
 
-        if(accountRepo.existsAccountByPhoneNumber(accountDTO.getPhoneNumber())) {
+        if (accountRepo.existsAccountByPhoneNumber(accountDTO.getPhoneNumber())) {
             responseMessage = "Phone number is duplicated";
             return responseMessage;
         }
