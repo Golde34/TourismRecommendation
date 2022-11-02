@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="tr.mobileapp.Activity.TripPlanActivity"
-    android:background="@drawable/bg_trip_plan">
+    android:background="@drawable/bg_sunset">
 
     <LinearLayout
         android:layout_width="match_parent"
