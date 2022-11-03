@@ -50,6 +50,7 @@ public class MainReview extends AppCompatActivity {
                         i.putExtra("response", response.toString());
                         i.putExtra("poiID",onResponse );
                         startActivity(i);
+                        finish();
                     }
                 }, new Response.ErrorListener() {
             @Override

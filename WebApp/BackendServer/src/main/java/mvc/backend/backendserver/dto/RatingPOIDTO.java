@@ -14,11 +14,19 @@ public class RatingPOIDTO {
 
     private String comment;
 
-    private Date timeCreate;
+    private String timeCreate;
 
     private String title;
     private int accountId;
     private int poiID;
+
+    public String getTimeCreate() {
+        return timeCreate;
+    }
+
+    public void setTimeCreate(String timeCreate) {
+        this.timeCreate = timeCreate;
+    }
 
     public int getRate() {
         return rate;
@@ -36,13 +44,7 @@ public class RatingPOIDTO {
         this.comment = comment;
     }
 
-    public Date getTimeCreate() {
-        return timeCreate;
-    }
 
-    public void setTimeCreate(Date timeCreate) {
-        this.timeCreate = timeCreate;
-    }
 
     public String getTitle() {
         return title;

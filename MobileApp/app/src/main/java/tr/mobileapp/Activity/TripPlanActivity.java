@@ -152,6 +152,7 @@ public class TripPlanActivity extends AppCompatActivity {
                         i.putExtra("response", response.toString());
 
                         startActivity(i);
+                        finish();
                     }
                 }, new Response.ErrorListener() {
             @Override

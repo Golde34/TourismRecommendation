@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +36,7 @@ public class ReviewPOIController {
         return new ResponseEntity<>(ratingPOIService.GetRatingPoiByPoiId1(poiId), HttpStatus.OK);
     }
     @PostMapping(value = "/Review")
-    public Map<String, String> CrateReview(@RequestBody RatingPOIDTO ratingPOIDTO) {
+    public Map<String, String> CrateReview(@RequestBody RatingPOIDTO ratingPOIDTO) throws ParseException {
         HashMap<String, String> map = new HashMap<>();
         map.put("message", ratingPOIService.CreateRating(ratingPOIDTO));
         return map;

@@ -8,7 +8,7 @@ public class ReviewPOI {
     private int ratingId;
     private int rate;
     private String comment;
-    private Date timeCreate;
+    private String timeCreate;
     private String accountName;
     private int poiId;
     private String title;
@@ -42,6 +42,14 @@ public class ReviewPOI {
     public ReviewPOI() {
     }
 
+    public String getTimeCreate() {
+        return timeCreate;
+    }
+
+    public void setTimeCreate(String timeCreate) {
+        this.timeCreate = timeCreate;
+    }
+
     public int getRatingId() {
         return ratingId;
     }
@@ -66,13 +74,7 @@ public class ReviewPOI {
         this.comment = comment;
     }
 
-    public Date getTimeCreate() {
-        return timeCreate;
-    }
 
-    public void setTimeCreate(Date timeCreate) {
-        this.timeCreate = timeCreate;
-    }
     public ArrayList<Account> GetAccountCommentReviewPOI() {return getAccountCommentReviewPOI;}
     public void SetAccountCommentReviewPOI(ArrayList<Account> getAccountCommentReviewPOI ) {this.getAccountCommentReviewPOI =getAccountCommentReviewPOI;}
 
