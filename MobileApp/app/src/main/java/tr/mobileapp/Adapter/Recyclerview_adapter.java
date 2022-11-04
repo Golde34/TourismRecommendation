@@ -49,7 +49,7 @@ public class Recyclerview_adapter extends RecyclerView.Adapter<Recyclerview_adap
 
         holder.tv_des.setText(model_eating.getComment());
 
-        holder.tv_username_time.setText(model_eating.getAccountName());
+        holder.tv_username_time.setText(model_eating.getAccountName() + ", " +model_eating.getTimeCreate());
 
 
     }

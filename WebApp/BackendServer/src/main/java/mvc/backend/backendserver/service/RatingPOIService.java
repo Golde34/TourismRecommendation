@@ -12,6 +12,9 @@ import mvc.backend.backendserver.service.interfaces.IRatingPOIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,8 +64,12 @@ public class RatingPOIService implements IRatingPOIService {
      * @param ratingPOIDTO
      */
     @Override
-    public String CreateRating(RatingPOIDTO ratingPOIDTO){
+    public String CreateRating(RatingPOIDTO ratingPOIDTO) throws ParseException {
         RatingPOI ratingPOI = new RatingPOI();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date parsed = format.parse(ratingPOIDTO.getTimeCreate());
+        Date sDate = new Date(parsed.getTime());
+        ratingPOI.setTimeCreate(sDate);
         ratingPOI.setRate(ratingPOIDTO.getRate());
         ratingPOI.setComment(ratingPOIDTO.getComment());
        //ratingPOI.setTimeCreate(ratingPOIDTO.getTimeCreate());

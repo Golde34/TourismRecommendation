@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -31,8 +32,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Dictionary;
 import java.util.HashMap;
@@ -45,6 +48,7 @@ import tr.mobileapp.Entity.MyPOI;
 import tr.mobileapp.Entity.ReviewPOI;
 import tr.mobileapp.Helper.SharedPreferenceHelper;
 import tr.mobileapp.R;
+import tr.mobileapp.Validate.CommentValidation;
 import tr.mobileapp.VolleySingleton;
 
 public class MainReviewTwo extends AppCompatActivity {
@@ -124,8 +128,10 @@ public class MainReviewTwo extends AppCompatActivity {
                 rvp.setRate(jsonObj.getJSONObject(i).getInt("rate"));
                 rvp.setComment(jsonObj.getJSONObject(i).getString("comment"));
                 rvp.setTitle(jsonObj.getJSONObject(i).getString("title"));
+                rvp.setTimeCreate(jsonObj.getJSONObject(i).getString("timeCreate"));
                 JSONObject Acount = jsonObj.getJSONObject(i).getJSONObject("account");
                 rvp.setAccountName(Acount.getString("fullName"));
+
                 listReviewPOI.add(rvp);
 //                JSONObject poi = jsonObj.getJSONObject(i).getJSONObject("poi");
 //                rvp.setPoiId(poi.getInt("poiid"));
@@ -182,6 +188,8 @@ public class MainReviewTwo extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void Sync(String url, Context context) {
         JSONObject jsonObjectRequest = new JSONObject();
+        try{
+
         String accountString = sharedPreferenceHelper.getDataFromPref(context, "MyPref", "account");
         Gson gson = new Gson();
 
@@ -189,20 +197,27 @@ public class MainReviewTwo extends AppCompatActivity {
         String Title = idTitleReview.getText().toString();
         String Comment = idCommentReview.getText().toString();
        myRating = (int) ratingBar.getRating();
-
-
-
-        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar c = Calendar.getInstance();
+            String date = sdf.format(c.getTime());
+        HashMap<Integer, String> isVerified = CommentValidation.commentValidation(Title,Comment);
+        for (int verified : isVerified.keySet()) {
+            if (verified == 0) {
             jsonObjectRequest.put("rate", myRating);
             jsonObjectRequest.put("comment", Comment);
             jsonObjectRequest.put("title", Title);
             jsonObjectRequest.put("accountId", String.valueOf(accountId));
             jsonObjectRequest.put("poiID", poiID);
-
-           // jsonObjectRequest.put("timeCreate", LocalTime.now());
-        }catch (JSONException e) {
-            e.printStackTrace();
+            jsonObjectRequest.put("timeCreate", date);
+            } else {
+                Toast.makeText(context, isVerified.get(verified), Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
+
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(
                 Request.Method.POST, url, jsonObjectRequest,
                 new Response.Listener<JSONObject>() {
@@ -211,6 +226,7 @@ public class MainReviewTwo extends AppCompatActivity {
                         Intent i = new Intent(context, MainReview.class);
                         i.putExtra("poiID", poiID);
                         startActivity(i);
+                        finish();
                     }
                 }, new Response.ErrorListener() {
             @Override
