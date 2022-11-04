@@ -20,6 +20,7 @@ import tr.mobileapp.Entity.RestingPlace;
 import tr.mobileapp.R;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> {
+
     private LayoutInflater inflater;
     private Context context;
     private ArrayList<RestingPlace> restingPlaces;

@@ -9,22 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Response;
-
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import tr.mobileapp.Entity.ReviewPOI;
 import tr.mobileapp.R;
 
-public class Recyclerview_adapter extends RecyclerView.Adapter<Recyclerview_adapter.ViewHolder>  {
+public class RatingRecycleAdapter extends RecyclerView.Adapter<RatingRecycleAdapter.ViewHolder>  {
 
     Context context;
     List<ReviewPOI> list;
 
-    public Recyclerview_adapter(Context context, List<ReviewPOI> list) {
+    public RatingRecycleAdapter(Context context, List<ReviewPOI> list) {
         this.context = context;
         this.list = list;
     }

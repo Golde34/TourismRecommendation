@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,10 +70,11 @@ public class RatingPOIService implements IRatingPOIService {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date parsed = format.parse(ratingPOIDTO.getTimeCreate());
         Date sDate = new Date(parsed.getTime());
+//        LocalDateTime now = LocalDateTime.now();
         ratingPOI.setTimeCreate(sDate);
         ratingPOI.setRate(ratingPOIDTO.getRate());
         ratingPOI.setComment(ratingPOIDTO.getComment());
-       //ratingPOI.setTimeCreate(ratingPOIDTO.getTimeCreate());
+//        ratingPOI.setTimeCreate((Date) format.parse(String.valueOf(now)));
         ratingPOI.setTitle(ratingPOIDTO.getTitle());
         Account acc = accountRepo.findAccountById(ratingPOIDTO.getAccountId());
         ratingPOI.setAccount(acc);

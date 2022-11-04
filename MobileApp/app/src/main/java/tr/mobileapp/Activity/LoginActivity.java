@@ -33,7 +33,6 @@ import tr.mobileapp.VolleySingleton;
 
 public class LoginActivity extends AppCompatActivity {
 
-
     SharedPreferenceHelper sharedPreferenceHelper = new SharedPreferenceHelper();
 
     private LinearLayout llToSignUp;
@@ -149,7 +148,6 @@ public class LoginActivity extends AppCompatActivity {
                     VolleyLog.d("TAG", "Error: " + error.getMessage());
                 }
             }) {
-
                 /**
                  * Passing some request headers
                  */
@@ -159,9 +157,7 @@ public class LoginActivity extends AppCompatActivity {
                     headers.put("Content-Type", "application/json; charset=utf-8");
                     return headers;
                 }
-
             };
-
             VolleySingleton.getmInstance(getApplicationContext()).addToRequestQueue(jsonObjReq);
         } catch (JSONException e) {
             e.printStackTrace();

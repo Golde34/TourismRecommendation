@@ -19,6 +19,7 @@ import tr.mobileapp.Entity.POIOfDay;
 import tr.mobileapp.R;
 
 public class TripDateAdapter extends RecyclerView.Adapter<TripDateAdapter.ViewHolder>{
+
     private Context context;
     private ArrayList<Date> dates;
     private LayoutInflater inflater;

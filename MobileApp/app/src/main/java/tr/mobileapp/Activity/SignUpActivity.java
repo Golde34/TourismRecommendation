@@ -31,6 +31,7 @@ import tr.mobileapp.Ultility.ValidationUtil;
 import tr.mobileapp.VolleySingleton;
 
 public class SignUpActivity extends AppCompatActivity {
+
     private LinearLayout llToLogin;
     private Button btnRegister;
     private EditText idEDTUserNameSignUp;
@@ -121,7 +122,6 @@ public class SignUpActivity extends AppCompatActivity {
                     VolleyLog.d("TAG", "Error: " + error.getMessage());
                 }
             }) {
-
                 /**
                  * Passing some request headers
                  */
@@ -131,24 +131,16 @@ public class SignUpActivity extends AppCompatActivity {
                     headers.put("Content-Type", "application/json; charset=utf-8");
                     return headers;
                 }
-
             };
-
             VolleySingleton.getmInstance(getApplicationContext()).addToRequestQueue(jsonObjReq);
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-
-    private void showError() {
-
-    }
-
     private void onLLToLogin(View view) {
         onBackPressed();
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

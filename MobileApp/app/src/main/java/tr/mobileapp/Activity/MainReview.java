@@ -20,8 +20,10 @@ import tr.mobileapp.R;
 import tr.mobileapp.VolleySingleton;
 
 public class MainReview extends AppCompatActivity {
+
     private Button btnReview;
     int onResponse;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +37,12 @@ public class MainReview extends AppCompatActivity {
                 TakeReviewPOI();
             }
         });
-
     }
+
     private void TakeReviewPOI() {
         Sync("http://10.0.2.2:8080/ReviewPOI/getRating1/", this);
     }
+
     private void Sync(String url, Context context)  {
         JsonArrayRequest jsonArrReq = new JsonArrayRequest(Request.Method.POST,
                 url+ String.valueOf(onResponse),null,

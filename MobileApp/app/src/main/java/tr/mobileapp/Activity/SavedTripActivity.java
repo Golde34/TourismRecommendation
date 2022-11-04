@@ -99,5 +99,4 @@ public class SavedTripActivity extends AppCompatActivity {
         rcvSavedTrip = findViewById(R.id.idRcvSavedTrip);
     }
 
-
 }

@@ -164,29 +164,7 @@ public class HomeActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         Intent i = new Intent(context, SavedTripActivity.class);
                         i.putExtra("response", response.toString());
-
                         startActivity(i);
-
-//                        ArrayList<Tour> tours = new ArrayList<>();
-//                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyy-MM-dd");
-//                        for (int i = 0; i < response.length(); i++) {
-//                            try {
-//                                JSONObject tourObj = response.getJSONObject(i);
-//                                int id = tourObj.getInt("id");
-//                                Date startDate = new java.sql.Date(dateFormat.parse(tourObj.getString("startDate")).getTime());
-//                                Date endDate = new java.sql.Date(dateFormat.parse(tourObj.getString("endDate")).getTime());
-//                                int numberOfDays = tourObj.getInt("numberOfDays");
-//
-//                                Tour tour = new Tour(id, startDate, endDate, numberOfDays);
-//                                tours.add(tour);
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            } catch (ParseException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-
-
                     }
                 }, new Response.ErrorListener() {
             @Override

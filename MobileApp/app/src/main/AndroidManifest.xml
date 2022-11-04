@@ -32,14 +32,10 @@
             android:exported="false" />
         <activity
             android:name=".Activity.MainReview"
-            android:exported="false">
-            />/ android:label="@string/title_activity_main_review"
-
-            android:theme="@style/Theme.MobileApp.NoActionBar" >
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".Activity.ListReview"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".Activity.WeatherActivity"
             android:exported="false" />

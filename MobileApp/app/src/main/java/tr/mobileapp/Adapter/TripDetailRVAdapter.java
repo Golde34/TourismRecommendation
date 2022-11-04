@@ -159,7 +159,6 @@ public class TripDetailRVAdapter extends RecyclerView.Adapter<TripDetailRVAdapte
             ratingTV.setText(Double.toString(poiOfDay.getPoi().getTotalRating()));
             ratingRB.setRating((float) poiOfDay.getPoi().getTotalRating());
 
-
             int min = 0;
             int max = images.size()-1;
             int random = new Random().nextInt((max - min) + 1) + min;
@@ -167,7 +166,6 @@ public class TripDetailRVAdapter extends RecyclerView.Adapter<TripDetailRVAdapte
             placeIV.setImageResource(images.get(random));
             poiID = poiOfDay.getPoi().getPOIId();
         }
-
 
         public String convertIntToHour(int hour)  throws ParseException {
             SimpleDateFormat sdf = new SimpleDateFormat("ss");

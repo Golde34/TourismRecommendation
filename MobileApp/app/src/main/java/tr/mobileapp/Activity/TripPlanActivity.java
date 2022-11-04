@@ -95,7 +95,6 @@ public class TripPlanActivity extends AppCompatActivity {
                 VolleyLog.d("TAG", "Error: " + error.getMessage());
             }
         }) {
-
             /**
              * Passing some request headers
              */
@@ -105,7 +104,6 @@ public class TripPlanActivity extends AppCompatActivity {
                 headers.put("Content-Type", "application/json; charset=utf-8");
                 return headers;
             }
-
         };
 //        Volley.newRequestQueue(this).add(jsonObjReq);
         VolleySingleton.getmInstance(getApplicationContext()).addToRequestQueue(jsonObjReq);
@@ -198,15 +196,12 @@ public class TripPlanActivity extends AppCompatActivity {
                 poiOfDays.clear();
                 poiOfDays.addAll(dayOfTripArrayList.get(position).getPoiOfDays());
                 adapter.notifyDataSetChanged();
-
             }
 
             @Override
             public void onLongItemClick(View view, int position) {
-
             }
         }));
-
     }
 
     private void Sync(String url, Context context)  {

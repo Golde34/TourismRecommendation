@@ -35,7 +35,6 @@ public class ListReview extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                        Intent i = new Intent(context, MainReviewTwo.class);
                         i.putExtra("response", response.toString());
-
                         startActivity(i);
                     }
                 }, new Response.ErrorListener() {
@@ -46,9 +45,11 @@ public class ListReview extends AppCompatActivity {
         });
         VolleySingleton.getmInstance(getApplicationContext()).addToRequestQueue(jsonArrReq);
     }
+
     private void TakeReviewPOI() {
         Sync("http://10.0.2.2:8080/ReviewPOI/getRating1/", this);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,6 @@ public class ListReview extends AppCompatActivity {
 
         lay_one = findViewById(R.id.lay_one);
         lay_two = findViewById(R.id.lay_two);
-
 
         lay_one.setOnClickListener(new View.OnClickListener() {
             @Override
